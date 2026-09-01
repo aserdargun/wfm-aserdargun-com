@@ -1,0 +1,69 @@
+import { useRef } from "react";
+import { catalog } from "../../data/catalog";
+import type { Locale } from "../../data/types";
+import { FieldMapTextAlternative } from "./FieldMapTextAlternative";
+
+interface FieldMapProps {
+  locale: Locale;
+  selectedId: string;
+  onSelect: (id: string) => void;
+}
+
+export function FieldMap({ locale, selectedId, onSelect }: FieldMapProps) {
+  const stages = catalog.concepts.filter(({ featured }) => featured);
+  const refs = useRef<Array<HTMLButtonElement | null>>([]);
+  const description = locale === "tr"
+    ? "Bu sıralama zorunlu bir mimari değil, alanı okumak için bir yoldur; sistemler katmanları atlayabilir veya geri besleme kurabilir."
+    : "This sequence is a reading path, not a mandatory architecture; systems may skip layers or create feedback loops.";
+
+  return <section className="field-map" aria-labelledby="field-map-title" aria-describedby="field-map-description field-map-relations">
+    <div className="section-heading-row">
+      <div>
+        <span className="eyebrow">{locale === "tr" ? "TEKNOLOJİ ALANI" : "TECHNOLOGY FIELD"}</span>
+        <h2 id="field-map-title">{locale === "tr" ? "Tahmin, planlama ve eylem katmanları" : "Layers of prediction, planning, and action"}</h2>
+      </div>
+      <span className="map-legend"><i aria-hidden="true" />{locale === "tr" ? "Seçili" : "Selected"}</span>
+    </div>
+    <p id="field-map-description" className="map-description">{description}</p>
+    <div className="field-map__desktop">
+      <svg className="map-lines" viewBox="0 0 1120 330" role="img" aria-label={locale === "tr" ? "Katmanlar arasındaki yönlü ilişkiler" : "Directed relationships between layers"}>
+        <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" /></marker></defs>
+        <path d="M115 120 H265" /><path d="M300 120 H450" /><path d="M485 120 H635" /><path d="M670 120 H820" /><path d="M855 120 H1005" />
+        <path className="feedback-line" d="M1005 178 C900 300 610 305 485 190" />
+      </svg>
+      <div className="stage-grid">
+        {stages.map((stage, index) => {
+          const content = catalog.locales[locale].entities[stage.id]!;
+          const label = stage.id === "world-model" ? "World Model" : content.title;
+          return <button
+            key={stage.id}
+            ref={(node) => { refs.current[index] = node; }}
+            type="button"
+            aria-label={label}
+            className={`stage-node stage-node--${index + 1}${selectedId === stage.id ? " is-selected" : ""}`}
+            data-testid="primary-stage"
+            aria-pressed={selectedId === stage.id}
+            onClick={() => onSelect(stage.id)}
+            onKeyDown={(event) => {
+              if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+                event.preventDefault();
+                const direction = event.key === "ArrowRight" ? 1 : -1;
+                refs.current[(index + direction + stages.length) % stages.length]?.focus();
+              }
+              if (event.key === "Enter" || event.key === " ") onSelect(stage.id);
+            }}
+          >
+            <span className="stage-node__index">{String(index + 1).padStart(2, "0")}</span>
+            <strong>{label}</strong>
+            <small>{content.summary}</small>
+          </button>;
+        })}
+      </div>
+    </div>
+    <FieldMapTextAlternative locale={locale} selectedId={selectedId} onSelect={onSelect} />
+    <ul id="field-map-relations" className="sr-only">
+      <li>LLM informs VLM.</li><li>VLM informs World Model.</li><li>World Model predicts for Planner.</li>
+      <li>Planner plans with Agent.</li><li>Agent acts through Physical AI.</li><li>Digital Twin feeds back to World Model.</li>
+    </ul>
+  </section>;
+}

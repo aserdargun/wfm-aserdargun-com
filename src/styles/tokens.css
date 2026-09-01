@@ -1,0 +1,37 @@
+:root {
+  color-scheme: dark;
+  --color-page: #0b0e11;
+  --color-panel: #0f1418;
+  --color-panel-raised: #11171b;
+  --color-border: #303941;
+  --color-border-subtle: #242c32;
+  --color-text: #f1f4ef;
+  --color-text-muted: #a7b0b5;
+  --color-text-dim: #879198;
+  --color-selection: #c8ff00;
+  --color-selection-soft: #172000;
+  --color-reported: #ffa200;
+  --color-reported-soft: #211500;
+  --color-question: #a5adb2;
+  --color-danger: #ff6b57;
+  --color-focus: #d8ff55;
+  --font-ui: "Inter Variable", Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --radius-control: 4px;
+  --radius-panel: 6px;
+  --duration-fast: 140ms;
+  --duration-standard: 220ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --duration-fast: 0.01ms; --duration-standard: 0.01ms; }
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+dist-ssr/
+coverage/
+playwright-report/
+test-results/
+.runtime/
+research/inbox/*.json
+.superpowers/
+*.tsbuildinfo

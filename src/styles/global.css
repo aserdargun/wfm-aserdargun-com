@@ -1,0 +1,32 @@
+@import "./tokens.css";
+
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--color-page); color: var(--color-text); font-family: var(--font-ui); min-width: 320px; }
+body { margin: 0; min-width: 320px; min-height: 100vh; background: var(--color-page); }
+button, input, select { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--color-selection); }
+button { color: inherit; }
+svg { flex: 0 0 auto; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { font-size: clamp(2.125rem, 4vw, 2.5rem); line-height: 1.08; letter-spacing: -0.035em; }
+h2 { font-size: 1.75rem; line-height: 1.15; letter-spacing: -0.02em; }
+h3 { font-size: 1.25rem; line-height: 1.25; }
+p { line-height: 1.58; }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+.sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important; }
+.skip-link { position: fixed; left: 16px; top: 8px; z-index: 100; padding: 10px 14px; background: var(--color-selection); color: #0b0e11; transform: translateY(-150%); transition: transform var(--duration-fast); }
+.skip-link:focus { transform: translateY(0); }
+.eyebrow, .inspector-kicker { display: block; color: var(--color-text-dim); font: 600 0.6875rem/1.2 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.page { max-width: 1120px; padding: var(--space-12) var(--space-8) var(--space-16); margin: 0 auto; }
+.page-header { max-width: 800px; margin-bottom: var(--space-12); }
+.page-header .eyebrow { margin-bottom: var(--space-3); color: var(--color-selection); }
+.page-header h1 { margin-bottom: var(--space-4); }
+.page-header p { max-width: 720px; color: var(--color-text-muted); font-size: 1.0625rem; }
+.text-link { display: inline-flex; align-items: center; gap: 6px; color: var(--color-selection); font-weight: 600; }
+
+@media (max-width: 700px) {
+  .page { padding: 32px 16px 64px; }
+  .page-header { margin-bottom: 32px; }
+}
