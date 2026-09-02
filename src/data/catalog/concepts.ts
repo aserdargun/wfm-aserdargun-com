@@ -12,6 +12,8 @@ export const concepts: Concept[] = [
   { id: "action-conditioning", order: 9, family: "planning", featured: false },
   { id: "uncertainty", order: 10, family: "simulation", featured: false },
   { id: "sim-to-real", order: 11, family: "embodiment", featured: false },
+  { id: "interactive-control", order: 12, family: "simulation", featured: false },
+  { id: "self-supervised-pretraining", order: 13, family: "foundation", featured: false },
 ];
 
 export const relations: Relation[] = [
@@ -26,4 +28,7 @@ export const relations: Relation[] = [
   { id: "relation-action-planner", sourceId: "action-conditioning", targetId: "planner", kind: "informs" },
   { id: "relation-uncertainty-world-model", sourceId: "uncertainty", targetId: "world-model", kind: "informs" },
   { id: "relation-sim-real-physical", sourceId: "sim-to-real", targetId: "physical-ai", kind: "informs" },
+  { id: "relation-interactive-world-model", sourceId: "interactive-control", targetId: "world-model", kind: "informs" },
+  { id: "relation-sslp-world-model", sourceId: "self-supervised-pretraining", targetId: "world-model", kind: "informs" },
+  { id: "relation-sslp-foundation", sourceId: "self-supervised-pretraining", targetId: "llm", kind: "precedes" },
 ];

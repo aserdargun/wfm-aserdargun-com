@@ -10,4 +10,8 @@ export const milestones: Milestone[] = [
   { id: "milestone-waymo-world-model", date: "2026-02-06", entityIds: ["waymo-world-model"], evidenceIds: ["evidence-waymo-world-model"] },
   { id: "milestone-cosmos-3", date: "2026-06-02", entityIds: ["cosmos-3"], evidenceIds: ["evidence-nvidia-cosmos3"] },
   { id: "milestone-atlas", date: "2026-09-01", entityIds: ["atlas"], evidenceIds: ["evidence-worldlabs-atlas"] },
+  { id: "milestone-gaia-1", date: "2023-09-29", entityIds: ["gaia-1"], evidenceIds: ["evidence-wayve-gaia1"] },
+  { id: "milestone-v-jepa-1", date: "2024-06-11", entityIds: ["v-jepa-1"], evidenceIds: ["evidence-meta-vjepa1"] },
+  { id: "milestone-oasis", date: "2024-10-21", entityIds: ["oasis"], evidenceIds: ["evidence-decart-oasis"] },
+  { id: "milestone-cosmos-1", date: "2025-01-07", entityIds: ["cosmos-1"], evidenceIds: ["evidence-nvidia-cosmos1"] },
 ];

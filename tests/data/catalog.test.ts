@@ -14,6 +14,10 @@ describe("published catalog", () => {
       "gwm-1",
       "waymo-world-model",
       "gaia-3",
+      "v-jepa-1",
+      "cosmos-1",
+      "gaia-1",
+      "oasis",
     ]);
   });
 

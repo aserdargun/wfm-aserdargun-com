@@ -43,4 +43,24 @@ export const models: Model[] = [
     availability: { weights: "closed", code: "closed", api: "closed", paper: "unknown", product: "closed" },
     capabilities: { drivingSimulation: true, actionConditioning: true, multiView: true, videoOutput: true },
   },
+  {
+    id: "v-jepa-1", organization: "Meta FAIR", family: "latent-dynamics", releaseDate: "2024-06-11",
+    availability: { weights: "open-weights", code: "open-code", api: "unknown", paper: paperOpen, product: "unknown" },
+    capabilities: { latentPrediction: true, selfSupervisedPretraining: true, videoOutput: "unknown" },
+  },
+  {
+    id: "cosmos-1", organization: "NVIDIA", family: "generalist-world", releaseDate: "2025-01-07",
+    availability: { weights: "open-weights", code: "open-code", api: "unknown", paper: paperOpen, product: "unknown" },
+    capabilities: { multimodal: true, videoOutput: true, physicalReasoning: true, actionConditioning: true },
+  },
+  {
+    id: "gaia-1", organization: "Wayve", family: "driving-world", releaseDate: "2023-09-29",
+    availability: { weights: "closed", code: "closed", api: "closed", paper: paperOpen, product: "closed" },
+    capabilities: { drivingSimulation: true, videoOutput: true, multiView: "unknown", actionConditioning: "unknown" },
+  },
+  {
+    id: "oasis", organization: "Decart & ETH Zürich", family: "video-world", releaseDate: "2024-10-21",
+    availability: { weights: "open-weights", code: "open-code", api: "unknown", paper: paperOpen, product: "unknown" },
+    capabilities: { interactiveWorld: true, realTimeInference: true, framesPerSecond: { value: 20, unit: "fps" }, openWeights: true },
+  },
 ];

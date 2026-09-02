@@ -10,6 +10,10 @@ export const claims: Claim[] = [
   { id: "claim-gwm1-simulates-actions", subjectId: "gwm-1", field: "action-conditioning", evidenceIds: ["evidence-runway-gwm1"], evidenceStatus: "reported", verificationState: "current" },
   { id: "claim-waymo-driving-simulation", subjectId: "waymo-world-model", field: "driving-simulation", evidenceIds: ["evidence-waymo-world-model"], evidenceStatus: "reported", verificationState: "current" },
   { id: "claim-gaia3-multiview-driving", subjectId: "gaia-3", field: "driving-simulation", evidenceIds: ["evidence-wayve-gaia3"], evidenceStatus: "reported", verificationState: "current" },
+  { id: "claim-vjepa1-latent-prediction", subjectId: "v-jepa-1", field: "latent-prediction", evidenceIds: ["evidence-meta-vjepa1"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "claim-cosmos1-multimodal-generation", subjectId: "cosmos-1", field: "multimodal-generation", evidenceIds: ["evidence-nvidia-cosmos1"], evidenceStatus: "reported", verificationState: "current" },
+  { id: "claim-gaia1-generative-driving", subjectId: "gaia-1", field: "driving-simulation", evidenceIds: ["evidence-wayve-gaia1"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "claim-oasis-realtime-interactive", subjectId: "oasis", field: "interactive-video", evidenceIds: ["evidence-decart-oasis"], evidenceStatus: "reported", verificationState: "current" },
 ];
 
 export const evidence: Evidence[] = [
@@ -22,4 +26,8 @@ export const evidence: Evidence[] = [
   { id: "evidence-runway-gwm1", sourceId: "source-runway-gwm1", supportedClaimIds: ["claim-gwm1-simulates-actions"], evidenceStatus: "reported", verificationState: "current" },
   { id: "evidence-waymo-world-model", sourceId: "source-waymo-world-model", supportedClaimIds: ["claim-waymo-driving-simulation"], evidenceStatus: "reported", verificationState: "current" },
   { id: "evidence-wayve-gaia3", sourceId: "source-wayve-gaia3", supportedClaimIds: ["claim-gaia3-multiview-driving"], evidenceStatus: "reported", verificationState: "current" },
+  { id: "evidence-meta-vjepa1", sourceId: "source-meta-vjepa1", supportedClaimIds: ["claim-vjepa1-latent-prediction"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "evidence-nvidia-cosmos1", sourceId: "source-nvidia-cosmos1", supportedClaimIds: ["claim-cosmos1-multimodal-generation"], evidenceStatus: "reported", verificationState: "current" },
+  { id: "evidence-wayve-gaia1", sourceId: "source-wayve-gaia1", supportedClaimIds: ["claim-gaia1-generative-driving"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "evidence-decart-oasis", sourceId: "source-decart-oasis", supportedClaimIds: ["claim-oasis-realtime-interactive"], evidenceStatus: "reported", verificationState: "current" },
 ];
