@@ -18,6 +18,7 @@ describe("published catalog", () => {
       "cosmos-1",
       "gaia-1",
       "oasis",
+      "oasis-3",
     ]);
   });
 

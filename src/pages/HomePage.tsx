@@ -17,7 +17,7 @@ export function HomePage({ locale }: Props) {
   const trackedCount = catalog.models.length;
   return <div className="home-page">
     <header className="home-hero">
-      <div><span className="eyebrow">WORLD MODELS / 2026</span><h1>{locale === "tr" ? "Dilden fiziksel zekâya" : "From language to physical intelligence"}</h1><p>{locale === "tr" ? "Dünya modellerinin algı, tahmin, planlama ve eylem arasındaki rolünü birincil kaynaklar üzerinden izleyen yaşayan bir araştırma atlası." : "A living research atlas tracing how world models connect perception, prediction, planning, and action through primary sources."}</p></div>
+      <div><span className="eyebrow">{locale === "tr" ? "DÜNYA MODELLERİ / 2026" : "WORLD MODELS / 2026"}</span><h1>{locale === "tr" ? "Dilden fiziksel zekâya" : "From language to physical intelligence"}</h1><p>{locale === "tr" ? "Dünya modellerinin algı, tahmin, planlama ve eylem arasındaki rolünü birincil kaynaklar üzerinden izleyen yaşayan bir araştırma atlası." : "A living research atlas tracing how world models connect perception, prediction, planning, and action through primary sources."}</p></div>
       <div className="hero-stat"><strong>{trackedCount}</strong><span>{locale === "tr" ? "İzlenen model" : "Tracked models"}</span></div>
     </header>
     <FieldMap locale={locale} selectedId={selectedId} onSelect={select} />

@@ -14,7 +14,7 @@ export function FieldMapTextAlternative({ locale, selectedId, onSelect }: Props)
       const content = catalog.locales[locale].entities[stage.id]!;
       return <li key={stage.id} className={stage.id === selectedId ? "is-selected" : ""}>
         <span className="stage-index">{String(index + 1).padStart(2, "0")}</span>
-        <button type="button" aria-label={`${stage.id === "world-model" ? "World Model" : content.title} — ${locale === "tr" ? "ayrıntıyı göster" : "show detail"}`} onClick={() => onSelect(stage.id)}>{stage.id === "world-model" ? "World Model" : content.title}</button>
+        <button type="button" aria-label={`${content.title} — ${locale === "tr" ? "ayrıntıyı göster" : "show detail"}`} onClick={() => onSelect(stage.id)}>{content.title}</button>
         <p>{content.summary}</p>
       </li>;
     })}

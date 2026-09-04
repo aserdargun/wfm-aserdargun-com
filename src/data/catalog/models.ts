@@ -44,12 +44,12 @@ export const models: Model[] = [
     capabilities: { drivingSimulation: true, actionConditioning: true, multiView: true, videoOutput: true },
   },
   {
-    id: "v-jepa-1", organization: "Meta FAIR", family: "latent-dynamics", releaseDate: "2024-06-11",
+    id: "v-jepa-1", organization: "Meta FAIR", family: "latent-dynamics", releaseDate: "2024-02-15",
     availability: { weights: "open-weights", code: "open-code", api: "unknown", paper: paperOpen, product: "unknown" },
     capabilities: { latentPrediction: true, selfSupervisedPretraining: true, videoOutput: "unknown" },
   },
   {
-    id: "cosmos-1", organization: "NVIDIA", family: "generalist-world", releaseDate: "2025-01-07",
+    id: "cosmos-1", organization: "NVIDIA", family: "generalist-world", releaseDate: "2025-01-06",
     availability: { weights: "open-weights", code: "open-code", api: "unknown", paper: paperOpen, product: "unknown" },
     capabilities: { multimodal: true, videoOutput: true, physicalReasoning: true, actionConditioning: true },
   },
@@ -59,8 +59,13 @@ export const models: Model[] = [
     capabilities: { drivingSimulation: true, videoOutput: true, multiView: "unknown", actionConditioning: "unknown" },
   },
   {
-    id: "oasis", organization: "Decart & ETH Zürich", family: "video-world", releaseDate: "2024-10-21",
+    id: "oasis", organization: "Decart & Etched", family: "video-world", releaseDate: "2024-10-31",
     availability: { weights: "open-weights", code: "open-code", api: "unknown", paper: paperOpen, product: "unknown" },
     capabilities: { interactiveWorld: true, realTimeInference: true, framesPerSecond: { value: 20, unit: "fps" }, openWeights: true },
+  },
+  {
+    id: "oasis-3", organization: "Decart", family: "driving-world", releaseDate: "2026-06-10",
+    availability: { weights: "closed", code: "closed", api: "api", paper: "unknown", product: "api" },
+    capabilities: { interactiveWorld: true, realTimeInference: true, drivingSimulation: true, actionConditioning: true, multiView: true },
   },
 ];

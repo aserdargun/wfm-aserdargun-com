@@ -2,6 +2,7 @@ import { ExternalLink } from "lucide-react";
 import { catalog } from "../../data/catalog";
 import type { Locale } from "../../data/types";
 import { EvidenceToken } from "./EvidenceToken";
+import { formatDate } from "../../app/format";
 
 interface EvidenceInspectorProps {
   locale: Locale;
@@ -31,7 +32,7 @@ export function EvidenceInspector({ locale, entityId }: EvidenceInspectorProps) 
       <h3>{locale === "tr" ? "Kaynak kaydı" : "Source record"}</h3>
       <dl>
         <div><dt>{locale === "tr" ? "Yayıncı" : "Publisher"}</dt><dd>{source?.publisher ?? unknown}</dd></div>
-        <div><dt>{locale === "tr" ? "Son kontrol" : "Last checked"}</dt><dd>{source?.lastChecked === "2026-09-01" ? (locale === "tr" ? "1 Eyl 2026" : "Sep 1 2026") : (source?.lastChecked ?? unknown)}</dd></div>
+        <div><dt>{locale === "tr" ? "Son kontrol" : "Last checked"}</dt><dd>{source ? formatDate(source.lastChecked, locale) : unknown}</dd></div>
       </dl>
       {source ? <a className="source-link" href={source.url} target="_blank" rel="noreferrer" aria-label={`${title} ${locale === "tr" ? "birincil kaynağını aç" : "open primary source"}`}>
         {locale === "tr" ? "Birincil kaynağı aç" : "Open primary source"}<ExternalLink aria-hidden="true" />

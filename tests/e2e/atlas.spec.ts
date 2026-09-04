@@ -1,9 +1,9 @@
 import { expect, test } from "@playwright/test";
 
-test("opens the Turkish field map and selects World Model", async ({ page }) => {
+test("opens the Turkish field map and selects Dünya modeli", async ({ page }) => {
   await page.goto("/tr");
   await expect(page.getByRole("heading", { name: "Dilden fiziksel zekâya" })).toBeVisible();
-  await page.getByRole("button", { name: "World Model" }).click();
+  await page.getByRole("button", { name: "Dünya modeli" }).click();
   await expect(page.getByRole("complementary", { name: "Kanıt inceleyici" })).toContainText("Dünya modeli");
 });
 

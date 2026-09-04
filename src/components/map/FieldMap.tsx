@@ -15,6 +15,21 @@ export function FieldMap({ locale, selectedId, onSelect }: FieldMapProps) {
   const description = locale === "tr"
     ? "Bu sıralama zorunlu bir mimari değil, alanı okumak için bir yoldur; sistemler katmanları atlayabilir veya geri besleme kurabilir."
     : "This sequence is a reading path, not a mandatory architecture; systems may skip layers or create feedback loops.";
+  const relationDescriptions = locale === "tr" ? [
+    "Büyük dil modeli, görsel-dil modeline bilgi sağlar.",
+    "Görsel-dil modeli, dünya modeline bilgi sağlar.",
+    "Dünya modeli, planlayıcı için tahmin üretir.",
+    "Planlayıcı, ajanla birlikte plan yapar.",
+    "Ajan, fiziksel yapay zekâ üzerinden eyleme geçer.",
+    "Dijital ikiz, dünya modelini geri besler.",
+  ] : [
+    "LLM informs VLM.",
+    "VLM informs the world model.",
+    "The world model predicts for the planner.",
+    "The planner plans with the agent.",
+    "The agent acts through physical AI.",
+    "The digital twin feeds back to the world model.",
+  ];
 
   return <section className="field-map" aria-labelledby="field-map-title" aria-describedby="field-map-description field-map-relations">
     <div className="section-heading-row">
@@ -34,7 +49,7 @@ export function FieldMap({ locale, selectedId, onSelect }: FieldMapProps) {
       <div className="stage-grid">
         {stages.map((stage, index) => {
           const content = catalog.locales[locale].entities[stage.id]!;
-          const label = stage.id === "world-model" ? "World Model" : content.title;
+          const label = content.title;
           return <button
             key={stage.id}
             ref={(node) => { refs.current[index] = node; }}
@@ -62,8 +77,7 @@ export function FieldMap({ locale, selectedId, onSelect }: FieldMapProps) {
     </div>
     <FieldMapTextAlternative locale={locale} selectedId={selectedId} onSelect={onSelect} />
     <ul id="field-map-relations" className="sr-only">
-      <li>LLM informs VLM.</li><li>VLM informs World Model.</li><li>World Model predicts for Planner.</li>
-      <li>Planner plans with Agent.</li><li>Agent acts through Physical AI.</li><li>Digital Twin feeds back to World Model.</li>
+      {relationDescriptions.map((description) => <li key={description}>{description}</li>)}
     </ul>
   </section>;
 }

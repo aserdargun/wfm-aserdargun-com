@@ -14,7 +14,7 @@ test("supports skip navigation and keyboard field-map selection", async ({ page 
   await expect(page.getByRole("link", { name: "Skip to main content" })).toBeFocused();
   await page.getByRole("link", { name: "Skip to main content" }).press("Enter");
   await expect(page.locator("#main-content")).toBeFocused();
-  const worldModel = page.getByRole("button", { name: "World Model", exact: true });
+  const worldModel = page.getByRole("button", { name: "World model", exact: true });
   await worldModel.focus();
   await page.keyboard.press("ArrowRight");
   await expect(page.getByRole("button", { name: "Planner", exact: true })).toBeFocused();

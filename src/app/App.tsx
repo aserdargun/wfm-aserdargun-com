@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BrowserRouter, useLocation } from "react-router-dom";
 import { StaticRouter } from "react-router";
 import { EvidenceInspector } from "../components/evidence/EvidenceInspector";
@@ -15,6 +16,8 @@ import { ModelPage } from "../pages/ModelPage";
 import { NotFoundPage } from "../pages/NotFoundPage";
 import { SignalsPage } from "../pages/SignalsPage";
 import { localeFromPath } from "./locale";
+import { CATALOG_VERIFIED_ON } from "./format";
+import { getRouteManifest } from "./routes";
 
 interface AppProps { routerMode?: "browser" | "static"; url?: string; }
 
@@ -29,6 +32,15 @@ function RouteView() {
   let currentRoute: RouteId = "home";
   let page: React.ReactNode;
   let inspectorId: string | undefined;
+
+  useEffect(() => {
+    const route = getRouteManifest().find(({ path }) => path === location.pathname);
+    document.documentElement.lang = locale;
+    if (route) {
+      document.title = route.title;
+      document.querySelector('meta[name="description"]')?.setAttribute("content", route.description);
+    }
+  }, [locale, location.pathname]);
 
   if (!section && parts.length === 1) {
     inspectorId = selectedId;
@@ -50,7 +62,7 @@ function RouteView() {
   } else if (section === "method") { currentRoute = "method"; page = <MethodPage locale={locale} />;
   } else page = <NotFoundPage locale={locale} />;
 
-  return <ResearchConsole locale={locale} currentRoute={currentRoute} currentPath={`${location.pathname}${location.search}`} lastVerified="2026-09-01" evidenceInspector={inspectorId ? <EvidenceInspector locale={locale} entityId={inspectorId} /> : undefined}>{page}</ResearchConsole>;
+  return <ResearchConsole locale={locale} currentRoute={currentRoute} currentPath={`${location.pathname}${location.search}`} lastVerified={CATALOG_VERIFIED_ON} evidenceInspector={inspectorId ? <EvidenceInspector locale={locale} entityId={inspectorId} /> : undefined}>{page}</ResearchConsole>;
 }
 
 export function App({ routerMode = "browser", url = "/en" }: AppProps) {

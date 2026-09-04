@@ -17,7 +17,7 @@ describe("FieldMap", () => {
     render(<FieldMap locale="en" selectedId="world-model" onSelect={onSelect} />);
     await user.click(screen.getByRole("button", { name: "Planner" }));
     expect(onSelect).toHaveBeenCalledWith("planner");
-    const worldModel = screen.getByRole("button", { name: "World Model" });
+    const worldModel = screen.getByRole("button", { name: "World model" });
     worldModel.focus();
     fireEvent.keyDown(worldModel, { key: "ArrowRight" });
     const planner = screen.getAllByRole("button", { name: "Planner" })[0]!;
