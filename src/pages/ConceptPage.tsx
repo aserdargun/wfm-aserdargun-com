@@ -1,4 +1,5 @@
 import { ArrowLeft } from "lucide-react";
+import { WorldModelLab } from "../components/WorldModelLab";
 import { catalog } from "../data/catalog";
 import type { Locale } from "../data/types";
 import { formatRelation } from "../app/format";
@@ -11,5 +12,6 @@ export function ConceptPage({ locale, entityId }: { locale: Locale; entityId: st
     <section><h2>{locale === "tr" ? "Neden önemli?" : "Why it matters"}</h2><p>{item.significance ?? item.summary}</p></section>
     <section><h2>{locale === "tr" ? "İlişkiler" : "Relationships"}</h2><ul className="relation-list">{relations.map((relation) => <li key={relation.id}><code>{formatRelation(locale, relation.kind)}</code><span>{catalog.locales[locale].entities[relation.sourceId]?.title} → {catalog.locales[locale].entities[relation.targetId]?.title}</span></li>)}</ul></section>
     {relatedModels.length ? <section><h2>{locale === "tr" ? "İlgili modeller" : "Related models"}</h2><p>{relatedModels.map((id) => catalog.locales[locale].entities[id]!.title).join(", ")}</p></section> : null}
+    {["world-model", "planner", "action-conditioning", "uncertainty", "interactive-control"].includes(entityId) && <WorldModelLab locale={locale} />}
   </article>;
 }

@@ -1,6 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import { FieldMap } from "../components/map/FieldMap";
 import { SignalLog } from "../components/signals/SignalLog";
+import { WorldModelLab } from "../components/WorldModelLab";
 import { catalog } from "../data/catalog";
 import type { Locale } from "../data/types";
 
@@ -21,6 +22,7 @@ export function HomePage({ locale }: Props) {
       <div className="hero-stat"><strong>{trackedCount}</strong><span>{locale === "tr" ? "İzlenen model" : "Tracked models"}</span></div>
     </header>
     <FieldMap locale={locale} selectedId={selectedId} onSelect={select} />
+    <WorldModelLab locale={locale} />
     <section className="home-signals" aria-labelledby="recent-signals"><div className="home-signals__head"><h2 id="recent-signals">{locale === "tr" ? "Ne değişti" : "What changed"}</h2><a href={`/${locale}/signals`}>{locale === "tr" ? "Tüm sinyaller" : "All signals"}</a></div><SignalLog locale={locale} compact /></section>
   </div>;
 }
