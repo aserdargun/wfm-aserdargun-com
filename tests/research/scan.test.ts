@@ -1,14 +1,23 @@
 import { createHash } from "node:crypto";
-import { mkdtemp, readFile, readdir, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 // @ts-expect-error JavaScript research module is exercised through its public runtime contract.
 import { scanSources } from "../../scripts/research/scan.mjs";
 // @ts-expect-error JavaScript research module is exercised through its public runtime contract.
 import { fingerprintContent } from "../../scripts/research/lib/fingerprint.mjs";
 // @ts-expect-error JavaScript research module is exercised through its public runtime contract.
 import { fetchSource } from "../../scripts/research/lib/fetch-source.mjs";
+
+const scratchPaths: string[] = [];
+async function createInbox() {
+  await mkdir("research/inbox", { recursive: true });
+  const path = await mkdtemp(join(process.cwd(), "research/inbox/test-scan-"));
+  scratchPaths.push(path);
+  return path;
+}
+afterEach(async () => { await Promise.all(scratchPaths.splice(0).map((path) => rm(path, { recursive: true, force: true }))); });
 
 async function hashDirectory(path: string) {
   const hash = createHash("sha256");
@@ -24,7 +33,7 @@ describe("research scanner", () => {
   it("creates stable review candidates, suppresses duplicates, and leaves public data untouched", async () => {
     const scratch = await mkdtemp(join(tmpdir(), "wfm-scan-"));
     const registryPath = join(scratch, "sources.json");
-    const inboxDir = join(scratch, "inbox");
+    const inboxDir = await createInbox();
     await writeFile(registryPath, JSON.stringify([
       { id: "meta-vjepa2", url: "https://ai.meta.com/blog/v-jepa-2-world-model-benchmarks/", entityIds: ["v-jepa-2"], fixture: "meta-vjepa2.html", previousFingerprint: "previous-meta" },
       { id: "worldlabs-atlas", url: "https://www.worldlabs.ai/blog/atlas", entityIds: ["atlas"], fixture: "worldlabs-atlas.html", previousFingerprint: "previous-atlas" },
@@ -52,7 +61,7 @@ describe("research scanner", () => {
     const fetchImpl = (url: string, options: RequestInit) => url.endsWith("/ok")
       ? Promise.resolve(new Response("updated", { headers: { "content-type": "text/plain" } }))
       : new Promise<Response>((_, reject) => options.signal?.addEventListener("abort", () => reject(new DOMException("aborted", "AbortError"))));
-    const report = await scanSources({ registryPath, inboxDir: join(scratch, "inbox"), detectedAt: "2026-09-01T12:00:00.000Z", fetchImpl, timeoutMs: 5 });
+    const report = await scanSources({ registryPath, inboxDir: await createInbox(), detectedAt: "2026-09-01T12:00:00.000Z", fetchImpl, timeoutMs: 5 });
     expect(report.status).toBe("partial");
     expect(report.failures[0]?.code).toBe("FETCH_TIMEOUT");
     expect(report.candidates).toHaveLength(1);

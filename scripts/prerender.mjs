@@ -35,6 +35,10 @@ for (const route of manifest) {
   await writeFile(resolve(outputDir, "index.html"), html, "utf8");
 }
 
+await writeFile(resolve(distDir, "research-export.json"), `${JSON.stringify(server.getApprovedExport(), null, 2)}\n`);
+await writeFile(resolve(distDir, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${manifest.map(({ path }) => `<url><loc>https://wfm.aserdargun.com${path}</loc></url>`).join("")}</urlset>\n`);
+await writeFile(resolve(distDir, "robots.txt"), "User-agent: *\nAllow: /\nSitemap: https://wfm.aserdargun.com/sitemap.xml\n");
+
 await rm(ssrDir, { recursive: true, force: true });
 
 function escapeHtml(value) {

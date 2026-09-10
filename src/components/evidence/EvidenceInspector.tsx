@@ -16,7 +16,7 @@ export function EvidenceInspector({ locale, entityId }: EvidenceInspectorProps) 
   const source = evidence ? catalog.sources.find((item) => item.id === evidence.sourceId) : undefined;
   const unknown = locale === "tr" ? "Bilinmiyor" : "Unknown";
   const title = content?.title ?? unknown;
-  return <aside className="evidence-inspector" aria-label={locale === "tr" ? "Kanıt inceleyici" : "Evidence inspector"}>
+  return <aside id="evidence-inspector" tabIndex={-1} className="evidence-inspector" aria-label={locale === "tr" ? "Kanıt inceleyici" : "Evidence inspector"}>
     <div className="inspector-kicker">{locale === "tr" ? "SEÇİLİ KATMAN" : "SELECTED LAYER"}</div>
     <h2>{title}</h2>
     <p className="inspector-summary">{content?.description ?? content?.summary ?? unknown}</p>

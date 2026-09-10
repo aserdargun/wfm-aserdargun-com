@@ -61,6 +61,7 @@ const modelFamilyLabels: Record<Locale, Record<Model["family"], string>> = {
 
 const availabilityLabels: Record<Locale, Record<Availability, string>> = {
   en: {
+    public: "Publicly available",
     "open-weights": "Open weights",
     "open-code": "Open code",
     api: "API available",
@@ -69,6 +70,7 @@ const availabilityLabels: Record<Locale, Record<Availability, string>> = {
     unknown: "Unknown",
   },
   tr: {
+    public: "Herkese açık",
     "open-weights": "Açık ağırlıklar",
     "open-code": "Açık kod",
     api: "API erişimi var",

@@ -65,7 +65,6 @@ export function FieldMap({ locale, selectedId, onSelect }: FieldMapProps) {
                 const direction = event.key === "ArrowRight" ? 1 : -1;
                 refs.current[(index + direction + stages.length) % stages.length]?.focus();
               }
-              if (event.key === "Enter" || event.key === " ") onSelect(stage.id);
             }}
           >
             <span className="stage-node__index">{String(index + 1).padStart(2, "0")}</span>

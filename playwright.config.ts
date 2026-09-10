@@ -2,6 +2,7 @@ import { defineConfig, devices } from "@playwright/test";
 
 const previewPort = process.env.WFM_PREVIEW_PORT ?? "42873";
 const previewUrl = `http://127.0.0.1:${previewPort}`;
+const productionUrl = process.env.WFM_BASE_URL;
 
 export default defineConfig({
   testDir: "./tests/e2e",
@@ -9,7 +10,7 @@ export default defineConfig({
   retries: 0,
   reporter: "list",
   use: {
-    baseURL: previewUrl,
+    baseURL: productionUrl ?? previewUrl,
     trace: "on-first-retry",
   },
   projects: [
@@ -27,7 +28,7 @@ export default defineConfig({
       },
     },
   ],
-  webServer: {
+  webServer: productionUrl ? undefined : {
     command: `npx vite preview --host 127.0.0.1 --port ${previewPort} --strictPort`,
     url: previewUrl,
     reuseExistingServer: false,

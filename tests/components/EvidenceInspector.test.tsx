@@ -8,7 +8,7 @@ describe("EvidenceInspector", () => {
     expect(screen.getByRole("complementary", { name: "Kanıt inceleyici" })).toHaveTextContent("Dünya modeli");
     expect(screen.getByText("Gösterildi")).toBeVisible();
     expect(screen.getByText("Güncel")).toBeVisible();
-    expect(screen.getByText("4 Eyl 2026")).toBeVisible();
+    expect(screen.getByText("10 Eyl 2026")).toBeVisible();
     expect(screen.getByRole("link", { name: /Dünya modeli birincil kaynağını aç/ })).toHaveAttribute("href", "https://arxiv.org/abs/1803.10122");
     expect(screen.getByRole("status")).toHaveTextContent("Dünya modeli seçildi");
   });

@@ -12,7 +12,8 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "research:scan": "node scripts/research/scan.mjs",
-    "validate": "npm run build && npm run test && npm run test:e2e"
+    "validate": "npm run build && npm run test && npm run test:e2e",
+    "validate:codex": "npm run validate && git diff --check"
   },
   "engines": {
     "node": ">=22.0.0"

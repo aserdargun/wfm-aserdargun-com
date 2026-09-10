@@ -2,9 +2,9 @@ import { catalog } from "../data/catalog";
 import type { Locale } from "../data/types";
 import { localeFromPath } from "./locale";
 
-const stageIds = new Set(catalog.concepts.map(({ id }) => id));
+const stageIds = new Set(catalog.concepts.filter(({ featured }) => featured).map(({ id }) => id));
 const familyIds = new Set<string>(catalog.models.map(({ family }) => family));
-const capabilityIds = new Set(catalog.models.flatMap(({ capabilities }) => Object.keys(capabilities)));
+const capabilityIds = new Set(["spatial-3d", "action-conditioning"]);
 const modelOrder = new Map(catalog.models.map(({ id }, index) => [id, index]));
 
 export interface AtlasUrlState {
@@ -29,7 +29,7 @@ export function parseAtlasUrl(url: URL): AtlasUrlState {
   if (family && familyIds.has(family)) state.family = family;
   if (capability && capabilityIds.has(capability)) state.capability = capability;
   state.compare = [...new Set((url.searchParams.get("compare") ?? "").split(",").filter((id) => modelOrder.has(id)))]
-    .sort((a, b) => modelOrder.get(a)! - modelOrder.get(b)!);
+    .sort((a, b) => modelOrder.get(a)! - modelOrder.get(b)!).slice(0, 4);
   return state;
 }
 

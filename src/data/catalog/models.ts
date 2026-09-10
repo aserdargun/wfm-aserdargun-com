@@ -1,6 +1,6 @@
 import type { Model } from "../types";
 
-const paperOpen = "open-code" as const;
+const paperOpen = "public" as const;
 
 export const models: Model[] = [
   {
@@ -11,7 +11,7 @@ export const models: Model[] = [
   {
     id: "v-jepa-2", organization: "Meta AI", family: "latent-dynamics", releaseDate: "2025-06-11",
     availability: { weights: "open-weights", code: "open-code", api: "unknown", paper: paperOpen, product: "unknown" },
-    capabilities: { latentPrediction: true, actionConditioning: true, robotPlanning: true, trainingVideoHours: { value: 1_000_000, unit: "hours" } },
+    capabilities: { latentPrediction: true, actionConditioning: true, robotPlanning: true, trainingVideoHoursLowerBound: { value: 1_000_000, unit: "hours" } },
   },
   {
     id: "genie-3", organization: "Google DeepMind", family: "video-world", releaseDate: "2025-08-05",
@@ -26,7 +26,7 @@ export const models: Model[] = [
   {
     id: "atlas", organization: "World Labs", family: "spatial-world", releaseDate: "2026-09-01",
     availability: { weights: "closed", code: "closed", api: "limited-preview", paper: "unknown", product: "limited-preview" },
-    capabilities: { spatialGeneration: true, cameraControl: true, pointCloudOutput: true, gaussianSplatOutput: true, maxVideoDuration: { value: 60, unit: "seconds" }, maxResolution: { value: 1440, unit: "p" } },
+    capabilities: { spatialGeneration: true, cameraControl: true, pointCloudOutput: true, gaussianSplatOutput: true, exampleVideoDuration: { value: 60, unit: "seconds" }, exampleVideoResolution: { value: 1440, unit: "p" } },
   },
   {
     id: "gwm-1", organization: "Runway", family: "generalist-world", releaseDate: "2025-12-11",
@@ -56,12 +56,12 @@ export const models: Model[] = [
   {
     id: "gaia-1", organization: "Wayve", family: "driving-world", releaseDate: "2023-09-29",
     availability: { weights: "closed", code: "closed", api: "closed", paper: paperOpen, product: "closed" },
-    capabilities: { drivingSimulation: true, videoOutput: true, multiView: "unknown", actionConditioning: "unknown" },
+    capabilities: { drivingSimulation: true, videoOutput: true, multiView: "unknown", actionConditioning: true },
   },
   {
     id: "oasis", organization: "Decart & Etched", family: "video-world", releaseDate: "2024-10-31",
     availability: { weights: "open-weights", code: "open-code", api: "unknown", paper: paperOpen, product: "unknown" },
-    capabilities: { interactiveWorld: true, realTimeInference: true, framesPerSecond: { value: 20, unit: "fps" }, openWeights: true },
+    capabilities: { interactiveWorld: true, actionConditioning: true, realTimeInference: true, framesPerSecond: { value: 20, unit: "fps" }, openWeights: true },
   },
   {
     id: "oasis-3", organization: "Decart", family: "driving-world", releaseDate: "2026-06-10",

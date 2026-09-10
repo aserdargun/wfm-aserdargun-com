@@ -14,7 +14,7 @@ export function SignalLog({ locale, compact = false }: { locale: Locale; compact
       return <article key={signal.id} data-testid="signal">
         <div className="signal-date"><time dateTime={signal.eventDate}>{formatDate(signal.eventDate, locale)}</time><span>{source.publisher}</span></div>
         <div className="signal-copy"><span className="eyebrow">{locale === "tr" ? "Ne değişti" : "What changed"}</span><h2>{content.title}</h2><p>{content.summary}</p>
-          {!compact ? <p className="signal-meta">{locale === "tr" ? "Olay tarihi" : "Event date"}: {formatDate(signal.eventDate, locale)} · {locale === "tr" ? "Yayın tarihi" : "Published"}: {formatDate(signal.publicationDate, locale)}</p> : null}
+          {!compact ? <p className="signal-meta">{locale === "tr" ? "Olay tarihi" : "Event date"}: {formatDate(signal.eventDate, locale)} · {locale === "tr" ? "Yayın tarihi" : "Published"}: {formatDate(signal.publicationDate, locale)} · {locale === "tr" ? "Son kaynak kontrolü" : "Source last checked"}: <time dateTime={source.lastChecked}>{formatDate(source.lastChecked, locale)}</time></p> : null}
         </div>
         <div className="signal-evidence"><EvidenceToken locale={locale} kind="evidence" value={evidence.evidenceStatus} />{!compact ? <EvidenceToken locale={locale} kind="verification" value={evidence.verificationState} /> : null}<a href={source.url} target="_blank" rel="noreferrer">{locale === "tr" ? "Kaynak" : "Source"}<ExternalLink aria-hidden="true" /></a></div>
       </article>;

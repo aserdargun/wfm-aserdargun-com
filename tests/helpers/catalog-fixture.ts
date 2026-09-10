@@ -14,11 +14,11 @@ const fixture: Catalog = {
   evidence: [{
     id: "evidence-example",
     sourceId: "source-example",
-    supportedClaimIds: ["claim-example"],
+    supportedClaimIds: ["claim-example", "claim-concept"],
     evidenceStatus: "demonstrated",
     verificationState: "current",
   }],
-  claims: [{
+  claims: [{ id: "claim-concept", subjectId: "world-model", field: "definition", evidenceIds: ["evidence-example"], evidenceStatus: "demonstrated", verificationState: "current" }, {
     id: "claim-example",
     subjectId: "model-example",
     field: "prediction",
@@ -55,7 +55,7 @@ const fixture: Catalog = {
         "milestone-example": { title: "Example milestone", summary: "A dated validation milestone.", slug: "example-milestone" },
         "signal-example": { title: "Example signal", summary: "An approved validation signal.", slug: "example-signal" },
       },
-      claims: { "claim-example": { text: "The model predicts a bounded environment transition." } },
+      claims: { "claim-concept": { text: "World model / Dünya modeli" }, "claim-example": { text: "The model predicts a bounded environment transition." } },
     },
     tr: {
       entities: {
@@ -64,7 +64,7 @@ const fixture: Catalog = {
         "milestone-example": { title: "Örnek dönüm noktası", summary: "Tarihli bir doğrulama dönüm noktası.", slug: "ornek-donum-noktasi" },
         "signal-example": { title: "Örnek sinyal", summary: "Onaylanmış bir doğrulama sinyali.", slug: "ornek-sinyal" },
       },
-      claims: { "claim-example": { text: "Model, sınırlandırılmış bir ortam geçişini tahmin eder." } },
+      claims: { "claim-concept": { text: "World model / Dünya modeli" }, "claim-example": { text: "Model, sınırlandırılmış bir ortam geçişini tahmin eder." } },
     },
   },
 };

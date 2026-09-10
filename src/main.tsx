@@ -9,5 +9,7 @@ import "./styles/components.css";
 const root = document.getElementById("root");
 if (!root) throw new Error("Missing #root element");
 const app = <StrictMode><App /></StrictMode>;
-if (root.hasChildNodes()) hydrateRoot(root, app);
+// Query-driven selections are not present in the static route snapshot.
+const hasInteractiveQuery = ["stage", "capability", "compare", "family"].some((key) => new URLSearchParams(location.search).has(key));
+if (root.hasChildNodes() && !hasInteractiveQuery) hydrateRoot(root, app);
 else createRoot(root).render(app);

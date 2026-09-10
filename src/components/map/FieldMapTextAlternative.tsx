@@ -14,8 +14,9 @@ export function FieldMapTextAlternative({ locale, selectedId, onSelect }: Props)
       const content = catalog.locales[locale].entities[stage.id]!;
       return <li key={stage.id} className={stage.id === selectedId ? "is-selected" : ""}>
         <span className="stage-index">{String(index + 1).padStart(2, "0")}</span>
-        <button type="button" aria-label={`${content.title} — ${locale === "tr" ? "ayrıntıyı göster" : "show detail"}`} onClick={() => onSelect(stage.id)}>{content.title}</button>
+        <button type="button" aria-label={content.title} aria-pressed={stage.id === selectedId} onClick={() => onSelect(stage.id)}>{content.title}</button>
         <p>{content.summary}</p>
+        {stage.id === selectedId ? <a className="mobile-evidence-link" href="#evidence-inspector">{locale === "tr" ? "Seçili katmanın kanıtını incele" : "Inspect evidence for this layer"}</a> : null}
       </li>;
     })}
   </ol>;

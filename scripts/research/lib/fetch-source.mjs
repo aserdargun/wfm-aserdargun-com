@@ -25,6 +25,7 @@ export async function fetchSource(source, options = {}) {
 async function fetchWithRedirects(url, fetchImpl, signal, redirectLimit) {
   let current = url;
   for (let redirects = 0; redirects <= redirectLimit; redirects += 1) {
+    if (new URL(current).protocol !== "https:") throw new Error("Research fetches and redirects must use HTTPS.");
     const response = await fetchImpl(current, {
       signal,
       redirect: "manual",
@@ -33,6 +34,7 @@ async function fetchWithRedirects(url, fetchImpl, signal, redirectLimit) {
     if (response.status < 300 || response.status >= 400) return response;
     const next = response.headers.get("location");
     if (!next) return response;
+    await response.body?.cancel();
     if (redirects === redirectLimit) throw new Error("Redirect limit exceeded.");
     current = new URL(next, current).href;
   }
@@ -41,7 +43,7 @@ async function fetchWithRedirects(url, fetchImpl, signal, redirectLimit) {
 
 async function readBounded(response, maxBytes) {
   const declared = Number(response.headers.get("content-length"));
-  if (Number.isFinite(declared) && declared > maxBytes) return { ok: false };
+  if (Number.isFinite(declared) && declared > maxBytes) { await response.body?.cancel(); return { ok: false }; }
   if (!response.body) return { ok: true, bytes: new Uint8Array() };
   const reader = response.body.getReader();
   const chunks = [];

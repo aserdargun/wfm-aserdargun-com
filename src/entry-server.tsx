@@ -5,6 +5,10 @@ import "./styles/global.css";
 import "./styles/components.css";
 
 export { getRouteManifest };
+export { getApprovedExport } from "./data/export";
+import { catalog } from "./data/catalog";
+import { assertValidCatalog } from "./data/validate";
+assertValidCatalog(catalog);
 
 export function renderRoute(url: string) {
   const route = getRouteManifest().find(({ path }) => path === new URL(url, "https://atlas.local").pathname);

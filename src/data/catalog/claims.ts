@@ -1,6 +1,18 @@
 import type { Claim, Evidence } from "../types";
 
 export const claims: Claim[] = [
+  { id: "claim-concept-llm", subjectId: "llm", field: "definition", evidenceIds: ["evidence-concept-llm"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "claim-concept-vlm", subjectId: "vlm", field: "definition", evidenceIds: ["evidence-concept-vlm"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "claim-concept-planner", subjectId: "planner", field: "definition", evidenceIds: ["evidence-concept-planner"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "claim-concept-agent", subjectId: "agent", field: "definition", evidenceIds: ["evidence-concept-agent"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "claim-concept-physical-ai", subjectId: "physical-ai", field: "definition", evidenceIds: ["evidence-concept-physical-ai"], evidenceStatus: "reported", verificationState: "current" },
+  { id: "claim-concept-digital-twin", subjectId: "digital-twin", field: "definition", evidenceIds: ["evidence-concept-digital-twin"], evidenceStatus: "reported", verificationState: "current" },
+  { id: "claim-concept-latent-state", subjectId: "latent-state", field: "definition", evidenceIds: ["evidence-concept-latent-state"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "claim-concept-action-conditioning", subjectId: "action-conditioning", field: "definition", evidenceIds: ["evidence-concept-action-conditioning"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "claim-concept-uncertainty", subjectId: "uncertainty", field: "definition", evidenceIds: ["evidence-concept-uncertainty"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "claim-concept-sim-to-real", subjectId: "sim-to-real", field: "definition", evidenceIds: ["evidence-concept-sim-to-real"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "claim-concept-interactive-control", subjectId: "interactive-control", field: "definition", evidenceIds: ["evidence-concept-interactive-control"], evidenceStatus: "reported", verificationState: "current" },
+  { id: "claim-concept-self-supervised-pretraining", subjectId: "self-supervised-pretraining", field: "definition", evidenceIds: ["evidence-concept-self-supervised-pretraining"], evidenceStatus: "demonstrated", verificationState: "current" },
   { id: "claim-world-model-definition", subjectId: "world-model", field: "definition", evidenceIds: ["evidence-world-models-2018"], evidenceStatus: "demonstrated", verificationState: "current" },
   { id: "claim-dreamerv3-domains", subjectId: "dreamer-v3", field: "reinforcement-learning", evidenceIds: ["evidence-dreamer-v3"], evidenceStatus: "demonstrated", verificationState: "current" },
   { id: "claim-vjepa2-action-conditioned-planning", subjectId: "v-jepa-2", field: "planning", evidenceIds: ["evidence-meta-vjepa2"], evidenceStatus: "demonstrated", verificationState: "current" },
@@ -14,10 +26,22 @@ export const claims: Claim[] = [
   { id: "claim-cosmos1-multimodal-generation", subjectId: "cosmos-1", field: "multimodal-generation", evidenceIds: ["evidence-nvidia-cosmos1"], evidenceStatus: "reported", verificationState: "current" },
   { id: "claim-gaia1-generative-driving", subjectId: "gaia-1", field: "driving-simulation", evidenceIds: ["evidence-wayve-gaia1"], evidenceStatus: "demonstrated", verificationState: "current" },
   { id: "claim-oasis-realtime-interactive", subjectId: "oasis", field: "interactive-video", evidenceIds: ["evidence-decart-oasis"], evidenceStatus: "reported", verificationState: "current" },
-  { id: "claim-oasis3-physical-ai", subjectId: "oasis-3", field: "driving-simulation", evidenceIds: ["evidence-decart-oasis3"], evidenceStatus: "reported", verificationState: "current" },
+  { id: "claim-oasis3-physical-ai", subjectId: "oasis-3", field: "driving-simulation", evidenceIds: ["evidence-decart-oasis3"], evidenceStatus: "reported", verificationState: "needs-review" },
 ];
 
 export const evidence: Evidence[] = [
+  { id: "evidence-concept-llm", sourceId: "source-gpt3", supportedClaimIds: ["claim-concept-llm"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "evidence-concept-vlm", sourceId: "source-clip", supportedClaimIds: ["claim-concept-vlm"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "evidence-concept-planner", sourceId: "source-meta-vjepa2", supportedClaimIds: ["claim-concept-planner"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "evidence-concept-agent", sourceId: "source-dreamer-v3", supportedClaimIds: ["claim-concept-agent"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "evidence-concept-physical-ai", sourceId: "source-nvidia-cosmos1", supportedClaimIds: ["claim-concept-physical-ai"], evidenceStatus: "reported", verificationState: "current" },
+  { id: "evidence-concept-digital-twin", sourceId: "source-nist-digital-twins", supportedClaimIds: ["claim-concept-digital-twin"], evidenceStatus: "reported", verificationState: "current" },
+  { id: "evidence-concept-latent-state", sourceId: "source-world-models-2018", supportedClaimIds: ["claim-concept-latent-state"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "evidence-concept-action-conditioning", sourceId: "source-meta-vjepa2", supportedClaimIds: ["claim-concept-action-conditioning"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "evidence-concept-uncertainty", sourceId: "source-pets", supportedClaimIds: ["claim-concept-uncertainty"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "evidence-concept-sim-to-real", sourceId: "source-domain-randomization", supportedClaimIds: ["claim-concept-sim-to-real"], evidenceStatus: "demonstrated", verificationState: "current" },
+  { id: "evidence-concept-interactive-control", sourceId: "source-decart-oasis", supportedClaimIds: ["claim-concept-interactive-control"], evidenceStatus: "reported", verificationState: "current" },
+  { id: "evidence-concept-self-supervised-pretraining", sourceId: "source-vjepa-paper", supportedClaimIds: ["claim-concept-self-supervised-pretraining"], evidenceStatus: "demonstrated", verificationState: "current" },
   { id: "evidence-world-models-2018", sourceId: "source-world-models-2018", supportedClaimIds: ["claim-world-model-definition"], evidenceStatus: "demonstrated", verificationState: "current" },
   { id: "evidence-dreamer-v3", sourceId: "source-dreamer-v3", supportedClaimIds: ["claim-dreamerv3-domains"], evidenceStatus: "demonstrated", verificationState: "current" },
   { id: "evidence-meta-vjepa2", sourceId: "source-meta-vjepa2", supportedClaimIds: ["claim-vjepa2-action-conditioned-planning"], evidenceStatus: "demonstrated", verificationState: "current" },
@@ -31,5 +55,5 @@ export const evidence: Evidence[] = [
   { id: "evidence-nvidia-cosmos1", sourceId: "source-nvidia-cosmos1", supportedClaimIds: ["claim-cosmos1-multimodal-generation"], evidenceStatus: "reported", verificationState: "current" },
   { id: "evidence-wayve-gaia1", sourceId: "source-wayve-gaia1", supportedClaimIds: ["claim-gaia1-generative-driving"], evidenceStatus: "demonstrated", verificationState: "current" },
   { id: "evidence-decart-oasis", sourceId: "source-decart-oasis", supportedClaimIds: ["claim-oasis-realtime-interactive"], evidenceStatus: "reported", verificationState: "current" },
-  { id: "evidence-decart-oasis3", sourceId: "source-decart-oasis3", supportedClaimIds: ["claim-oasis3-physical-ai"], evidenceStatus: "reported", verificationState: "current" },
+  { id: "evidence-decart-oasis3", sourceId: "source-decart-oasis3", supportedClaimIds: ["claim-oasis3-physical-ai"], evidenceStatus: "reported", verificationState: "needs-review" },
 ];

@@ -1,16 +1,188 @@
 [
-  { "id": "world-models-2018", "url": "https://arxiv.org/abs/1803.10122", "entityIds": ["world-model"], "fixture": "world-models-2018.html", "previousFingerprint": "a0e55249bf150297d54f0b3adba226a3a8e1b3c81264dfad24faa390dd9f0f03" },
-  { "id": "dreamer-v3", "url": "https://arxiv.org/abs/2301.04104", "entityIds": ["dreamer-v3"], "fixture": "dreamer-v3.html", "previousFingerprint": "af3ec9fd122c6b027cdcf17322727dedcbbf37311324ec14e5274e6c0e8b4cf9" },
-  { "id": "meta-vjepa2", "url": "https://ai.meta.com/blog/v-jepa-2-world-model-benchmarks/", "entityIds": ["v-jepa-2"], "fixture": "meta-vjepa2.html", "previousFingerprint": "d1d41790b27583165d40fb9b6d87d75a578e0034b3d8db68ace50f474cb476d7" },
-  { "id": "deepmind-genie3", "url": "https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/", "entityIds": ["genie-3"], "fixture": "deepmind-genie3.html", "previousFingerprint": "3a530beb84afb2aa89fb060671157f5e9ff257c6d14822108929b245e93a3bc3" },
-  { "id": "nvidia-cosmos3", "url": "https://arxiv.org/abs/2606.02800", "entityIds": ["cosmos-3"], "fixture": "nvidia-cosmos3.html", "previousFingerprint": "779690d1a643e62c7f7656eecdc4a5d0b0772e13e9d602c85d5b30f1de48c770" },
-  { "id": "worldlabs-atlas", "url": "https://www.worldlabs.ai/blog/atlas", "entityIds": ["atlas"], "fixture": "worldlabs-atlas.html", "previousFingerprint": "eee81af26673cce451a795a2f58f6bc26b193bf898e652b4128230cef3b58dd7" },
-  { "id": "runway-gwm1", "url": "https://runway.com/research/introducing-runway-gwm-1", "entityIds": ["gwm-1"], "fixture": "runway-gwm1.html", "previousFingerprint": "1a200a9eeeb38bbea15236b3017495e704731d7472055184b3fd410632acce77" },
-  { "id": "waymo-world-model", "url": "https://waymo.com/blog/2026/02/the-waymo-world-model-a-new-frontier-for-autonomous-driving-simulation/", "entityIds": ["waymo-world-model"], "fixture": "waymo-world-model.html", "previousFingerprint": "50cc86d0ba527de00b566fb646fcd92bf3dc789a0c8ebc2f1ea2079490d075ae" },
-  { "id": "wayve-gaia3", "url": "https://wayve.ai/press/wayve-launches-gaia3/", "entityIds": ["gaia-3"], "fixture": "wayve-gaia3.html", "previousFingerprint": "86bc21a21d822eb632b42b8774f21d733bb70bef29b254da0baa01128cfac21e" },
-  { "id": "meta-vjepa1", "url": "https://ai.meta.com/blog/v-jepa-yann-lecun-ai-model-video-joint-embedding-predictive-architecture/", "entityIds": ["v-jepa-1"], "fixture": "meta-vjepa1.html", "previousFingerprint": "d43bcd6162de5379a87eb2506586d71bc3ec80cc53889126d5f3f9f3226de2a9" },
-  { "id": "nvidia-cosmos1", "url": "https://research.nvidia.com/publication/2025-01_cosmos-world-foundation-model-platform-physical-ai", "entityIds": ["cosmos-1"], "fixture": "nvidia-cosmos1.html", "previousFingerprint": "9d826b909042c74f5536f8867fe27eb5ee684ff04d084b84e53baf19d837b72a" },
-  { "id": "wayve-gaia1", "url": "https://arxiv.org/abs/2309.17080", "entityIds": ["gaia-1"], "fixture": "wayve-gaia1.html", "previousFingerprint": "359a51fbb8f2f37aa9363513f266e1b198a0a195740d0ce440127e9786e2842a" },
-  { "id": "decart-oasis", "url": "https://oasis-model.github.io/", "entityIds": ["oasis"], "fixture": "decart-oasis.html", "previousFingerprint": "d4eaa81a86f799942fe856cdf08022d3aca47a5b82ea0147b574e637bcc10f0b" },
-  { "id": "decart-oasis3", "url": "https://decart.ai/oasis", "entityIds": ["oasis-3"], "fixture": "decart-oasis3.html", "previousFingerprint": "32eaf4ca9984add9261f7bd20aa0d2709bfe66afcdec92b42973476f0e07e1d5" }
+  {
+    "id": "world-models-2018",
+    "url": "https://arxiv.org/abs/1803.10122",
+    "entityIds": [
+      "world-model",
+      "latent-state"
+    ],
+    "fixture": "world-models-2018.html",
+    "previousFingerprint": "a0e55249bf150297d54f0b3adba226a3a8e1b3c81264dfad24faa390dd9f0f03"
+  },
+  {
+    "id": "dreamer-v3",
+    "url": "https://arxiv.org/abs/2301.04104",
+    "entityIds": [
+      "dreamer-v3",
+      "agent"
+    ],
+    "fixture": "dreamer-v3.html",
+    "previousFingerprint": "af3ec9fd122c6b027cdcf17322727dedcbbf37311324ec14e5274e6c0e8b4cf9"
+  },
+  {
+    "id": "meta-vjepa2",
+    "url": "https://ai.meta.com/blog/v-jepa-2-world-model-benchmarks/",
+    "entityIds": [
+      "v-jepa-2",
+      "planner",
+      "action-conditioning"
+    ],
+    "fixture": "meta-vjepa2.html",
+    "previousFingerprint": "d1d41790b27583165d40fb9b6d87d75a578e0034b3d8db68ace50f474cb476d7"
+  },
+  {
+    "id": "deepmind-genie3",
+    "url": "https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/",
+    "entityIds": [
+      "genie-3"
+    ],
+    "fixture": "deepmind-genie3.html",
+    "previousFingerprint": "3a530beb84afb2aa89fb060671157f5e9ff257c6d14822108929b245e93a3bc3"
+  },
+  {
+    "id": "nvidia-cosmos3",
+    "url": "https://arxiv.org/abs/2606.02800",
+    "entityIds": [
+      "cosmos-3"
+    ],
+    "fixture": "nvidia-cosmos3.html",
+    "previousFingerprint": "779690d1a643e62c7f7656eecdc4a5d0b0772e13e9d602c85d5b30f1de48c770"
+  },
+  {
+    "id": "worldlabs-atlas",
+    "url": "https://www.worldlabs.ai/blog/atlas",
+    "entityIds": [
+      "atlas"
+    ],
+    "fixture": "worldlabs-atlas.html",
+    "previousFingerprint": "eee81af26673cce451a795a2f58f6bc26b193bf898e652b4128230cef3b58dd7"
+  },
+  {
+    "id": "runway-gwm1",
+    "url": "https://runway.com/research/introducing-runway-gwm-1",
+    "entityIds": [
+      "gwm-1"
+    ],
+    "fixture": "runway-gwm1.html",
+    "previousFingerprint": "1a200a9eeeb38bbea15236b3017495e704731d7472055184b3fd410632acce77"
+  },
+  {
+    "id": "waymo-world-model",
+    "url": "https://waymo.com/blog/2026/02/the-waymo-world-model-a-new-frontier-for-autonomous-driving-simulation/",
+    "entityIds": [
+      "waymo-world-model"
+    ],
+    "fixture": "waymo-world-model.html",
+    "previousFingerprint": "50cc86d0ba527de00b566fb646fcd92bf3dc789a0c8ebc2f1ea2079490d075ae"
+  },
+  {
+    "id": "wayve-gaia3",
+    "url": "https://wayve.ai/press/wayve-launches-gaia3/",
+    "entityIds": [
+      "gaia-3"
+    ],
+    "fixture": "wayve-gaia3.html",
+    "previousFingerprint": "86bc21a21d822eb632b42b8774f21d733bb70bef29b254da0baa01128cfac21e"
+  },
+  {
+    "id": "meta-vjepa1",
+    "url": "https://ai.meta.com/blog/v-jepa-yann-lecun-ai-model-video-joint-embedding-predictive-architecture/",
+    "entityIds": [
+      "v-jepa-1"
+    ],
+    "fixture": "meta-vjepa1.html",
+    "previousFingerprint": "d43bcd6162de5379a87eb2506586d71bc3ec80cc53889126d5f3f9f3226de2a9"
+  },
+  {
+    "id": "nvidia-cosmos1",
+    "url": "https://research.nvidia.com/publication/2025-01_cosmos-world-foundation-model-platform-physical-ai",
+    "entityIds": [
+      "cosmos-1",
+      "physical-ai"
+    ],
+    "fixture": "nvidia-cosmos1.html",
+    "previousFingerprint": "9d826b909042c74f5536f8867fe27eb5ee684ff04d084b84e53baf19d837b72a"
+  },
+  {
+    "id": "wayve-gaia1",
+    "url": "https://arxiv.org/abs/2309.17080",
+    "entityIds": [
+      "gaia-1"
+    ],
+    "fixture": "wayve-gaia1.html",
+    "previousFingerprint": "359a51fbb8f2f37aa9363513f266e1b198a0a195740d0ce440127e9786e2842a"
+  },
+  {
+    "id": "decart-oasis",
+    "url": "https://oasis-model.github.io/",
+    "entityIds": [
+      "oasis",
+      "interactive-control"
+    ],
+    "fixture": "decart-oasis.html",
+    "previousFingerprint": "d4eaa81a86f799942fe856cdf08022d3aca47a5b82ea0147b574e637bcc10f0b"
+  },
+  {
+    "id": "decart-oasis3",
+    "url": "https://decart.ai/oasis",
+    "entityIds": [
+      "oasis-3"
+    ],
+    "fixture": "decart-oasis3.html",
+    "previousFingerprint": "32eaf4ca9984add9261f7bd20aa0d2709bfe66afcdec92b42973476f0e07e1d5"
+  },
+  {
+    "id": "gpt3",
+    "url": "https://arxiv.org/abs/2005.14165",
+    "entityIds": [
+      "llm"
+    ],
+    "fixture": "gpt3.html",
+    "previousFingerprint": "2bde6a9ab3f722f5a7579e022fe48be38d8d9e2734e0f420f587cf22aaa608dc"
+  },
+  {
+    "id": "clip",
+    "url": "https://arxiv.org/abs/2103.00020",
+    "entityIds": [
+      "vlm"
+    ],
+    "fixture": "clip.html",
+    "previousFingerprint": "a63f3dff4641efdb4c51cec5d676c6e96538035ad2bbf41e35e9d81e32a8820c"
+  },
+  {
+    "id": "nist-digital-twins",
+    "url": "https://www.nist.gov/programs-projects/digital-twins-advanced-manufacturing",
+    "entityIds": [
+      "digital-twin"
+    ],
+    "fixture": "nist-digital-twins.html",
+    "previousFingerprint": "6bdff7962724e52af11841e93a721287d4d6c15237e25a62602e60d012889ff3"
+  },
+  {
+    "id": "pets",
+    "url": "https://arxiv.org/abs/1805.12114",
+    "entityIds": [
+      "uncertainty"
+    ],
+    "fixture": "pets.html",
+    "previousFingerprint": "e7441549d1fa41cd308dd58d835a00f0a9109c2e750f64d89729394035f98a6b"
+  },
+  {
+    "id": "domain-randomization",
+    "url": "https://arxiv.org/abs/1703.06907",
+    "entityIds": [
+      "sim-to-real"
+    ],
+    "fixture": "domain-randomization.html",
+    "previousFingerprint": "83fc15a519db8d364e02f1239b21668719e73a95c61cf898fd27496d309f467b"
+  },
+  {
+    "id": "vjepa-paper",
+    "url": "https://arxiv.org/abs/2404.08471",
+    "entityIds": [
+      "self-supervised-pretraining"
+    ],
+    "fixture": "vjepa-paper.html",
+    "previousFingerprint": "05cd2ade8f37d51f5c5daced983a847c4f7fb418049788df08d191a768bcf2af"
+  }
 ]

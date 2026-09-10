@@ -2,6 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import { FieldMap } from "../components/map/FieldMap";
 import { SignalLog } from "../components/signals/SignalLog";
 import { WorldModelLab } from "../components/WorldModelLab";
+import { parseAtlasUrl } from "../app/url-state";
 import { catalog } from "../data/catalog";
 import type { Locale } from "../data/types";
 
@@ -9,7 +10,7 @@ interface Props { locale: Locale; }
 
 export function HomePage({ locale }: Props) {
   const [params, setParams] = useSearchParams();
-  const selectedId = params.get("stage") ?? "world-model";
+  const selectedId = parseAtlasUrl(new URL(`/${locale}?${params}`, "https://atlas.local")).stage ?? "world-model";
   const select = (id: string) => {
     const next = new URLSearchParams(params);
     next.set("stage", id);

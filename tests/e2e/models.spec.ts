@@ -8,7 +8,7 @@ test("filters and compares models with shareable state", async ({ page }) => {
   await page.getByRole("checkbox", { name: "Atlas" }).click();
   await expect(page).toHaveURL(/compare=atlas/);
   await page.getByRole("checkbox", { name: "V-JEPA 2" }).click();
-  await expect(page).toHaveURL(/compare=atlas%2Cv-jepa-2/);
+  await expect(page).toHaveURL(/compare=v-jepa-2%2Catlas/);
   await expect(page.getByRole("table", { name: "Model comparison" })).toBeVisible();
   await page.reload();
   await expect(page.getByRole("checkbox", { name: "Atlas" })).toBeChecked();

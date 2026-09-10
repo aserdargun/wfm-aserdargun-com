@@ -23,6 +23,8 @@ export function validateCatalog(catalog: Catalog): CatalogIssue[] {
     for (const failure of parsed.error.issues) {
       issues.push(issue("SCHEMA_INVALID", failure.path.join("."), failure.message));
     }
+    // Stop before traversing structurally invalid data.
+    return issues;
   }
 
   const collections = [
@@ -45,6 +47,9 @@ export function validateCatalog(catalog: Catalog): CatalogIssue[] {
   }
 
   const entities = new Set(publicEntityIds(catalog));
+  const allEntityIds = publicEntityIds(catalog);
+  if (new Set(allEntityIds).size !== allEntityIds.length) issues.push(issue("DUPLICATE_ID", "entities", "Public entity ids must be globally unique."));
+
   const evidenceIds = new Set(catalog.evidence.map(({ id }) => id));
   const sourceIds = new Set(catalog.sources.map(({ id }) => id));
   const claimIds = new Set(catalog.claims.map(({ id }) => id));
@@ -76,6 +81,57 @@ export function validateCatalog(catalog: Catalog): CatalogIssue[] {
   catalog.relations.forEach((relation, index) => {
     if (!entities.has(relation.sourceId) || !entities.has(relation.targetId)) {
       issues.push(issue("ORPHAN_RELATION", `relations.${index}`, `Relation ${relation.id} has an unknown endpoint.`));
+    }
+  });
+
+  const checkReferences = (path: string, entityRefs: string[], evidenceRefs: string[]) => {
+    if (!entityRefs.length || entityRefs.some((id) => !entities.has(id))) {
+      issues.push(issue("ORPHAN_RELATION", path, "Public records require existing entities."));
+    }
+    if (!evidenceRefs.length || evidenceRefs.some((id) => !evidenceIds.has(id))) {
+      issues.push(issue("CLAIM_EVIDENCE_REQUIRED", path, "Public records require existing primary-source evidence."));
+    }
+  };
+  catalog.milestones.forEach((entry, index) => checkReferences(`milestones.${index}`, entry.entityIds, entry.evidenceIds));
+  catalog.signals.forEach((entry, index) => checkReferences(`signals.${index}`, entry.affectedEntityIds, entry.evidenceIds));
+  [...catalog.concepts, ...catalog.models].forEach((entry, index) => {
+    if (!catalog.claims.some((claim) => claim.subjectId === entry.id)) issues.push(issue("CLAIM_EVIDENCE_REQUIRED", `entities.${index}`, "Concepts and models require a sourced claim."));
+  });
+  catalog.claims.forEach((claim, index) => {
+    if (claim.evidenceIds.some((id) => !catalog.evidence.find((entry) => entry.id === id)?.supportedClaimIds.includes(claim.id))) {
+      issues.push(issue("CLAIM_EVIDENCE_REQUIRED", `claims.${index}`, "Evidence must explicitly support the referencing claim."));
+    }
+  });
+  catalog.evidence.forEach((entry, index) => {
+    if (entry.supportedClaimIds.some((id) => !catalog.claims.find((claim) => claim.id === id)?.evidenceIds.includes(entry.id))) {
+      issues.push(issue("CLAIM_EVIDENCE_REQUIRED", `evidence.${index}`, "Supported claims must reference this evidence."));
+    }
+  });
+
+  catalog.sources.forEach((source, index) => {
+    if (!source.expectedEntityIds.length || source.expectedEntityIds.some((id) => !entities.has(id))) {
+      issues.push(issue("ORPHAN_RELATION", `sources.${index}.expectedEntityIds`, "Sources must identify existing entities."));
+    }
+  });
+  catalog.claims.forEach((claim, index) => {
+    for (const id of claim.evidenceIds) {
+      const evidence = catalog.evidence.find((entry) => entry.id === id);
+      const source = catalog.sources.find((entry) => entry.id === evidence?.sourceId);
+      if (source && !source.expectedEntityIds.includes(claim.subjectId)) {
+        issues.push(issue("CLAIM_EVIDENCE_REQUIRED", `claims.${index}`, "The primary source does not cover the claim subject."));
+      }
+      if (claim.verificationState === "current" && evidence && evidence.verificationState !== "current") {
+        issues.push(issue("SCHEMA_INVALID", `claims.${index}.verificationState`, "Current claims cannot depend on evidence awaiting review, stale evidence, or withdrawn evidence."));
+      }
+    }
+  });
+  catalog.signals.forEach((signal, index) => {
+    const covered = new Set(signal.evidenceIds.flatMap((id) => {
+      const evidence = catalog.evidence.find((entry) => entry.id === id);
+      return catalog.sources.find((entry) => entry.id === evidence?.sourceId)?.expectedEntityIds ?? [];
+    }));
+    if (signal.affectedEntityIds.some((id) => !covered.has(id))) {
+      issues.push(issue("CLAIM_EVIDENCE_REQUIRED", `signals.${index}`, "Signal evidence must cover its affected entities."));
     }
   });
 

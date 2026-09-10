@@ -24,7 +24,7 @@ export const relations: Relation[] = [
   { id: "relation-agent-physical-ai", sourceId: "agent", targetId: "physical-ai", kind: "acts-through" },
   { id: "relation-physical-ai-digital-twin", sourceId: "physical-ai", targetId: "digital-twin", kind: "feeds-back-to" },
   { id: "relation-digital-twin-world-model", sourceId: "digital-twin", targetId: "world-model", kind: "feeds-back-to" },
-  { id: "relation-latent-world-model", sourceId: "latent-state", targetId: "world-model", kind: "contains" },
+  { id: "relation-latent-world-model", sourceId: "world-model", targetId: "latent-state", kind: "contains" },
   { id: "relation-action-planner", sourceId: "action-conditioning", targetId: "planner", kind: "informs" },
   { id: "relation-uncertainty-world-model", sourceId: "uncertainty", targetId: "world-model", kind: "informs" },
   { id: "relation-sim-real-physical", sourceId: "sim-to-real", targetId: "physical-ai", kind: "informs" },

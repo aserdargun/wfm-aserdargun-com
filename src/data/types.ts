@@ -2,7 +2,7 @@ export type Locale = "en" | "tr";
 export type EntityKind = "concept" | "model" | "milestone" | "signal";
 export type EvidenceStatus = "demonstrated" | "reported" | "inferred" | "editorial-synthesis";
 export type VerificationState = "current" | "stale" | "needs-review" | "withdrawn";
-export type Availability = "open-weights" | "open-code" | "api" | "limited-preview" | "closed" | "unknown";
+export type Availability = "public" | "open-weights" | "open-code" | "api" | "limited-preview" | "closed" | "unknown";
 export type RelationKind =
   | "precedes"
   | "informs"

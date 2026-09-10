@@ -20,12 +20,12 @@ npm run stop
 ## Validation
 
 ```bash
-npm test
-npm run build
-npm run test:e2e
+npm run validate:codex
 ```
 
-`npm run build` emits prerendered HTML for every Turkish and English public route. `npm run validate` runs the complete local acceptance chain.
+`npm run build` emits prerendered HTML for every Turkish and English public route. `npm run validate:codex` runs the production build, unit/contract tests, desktop/mobile browser checks, and `git diff --check`. Standalone `npm test` requires a current build for the prerender assertions.
+
+The build validates the approved catalog before prerendering and emits `research-export.json`, `sitemap.xml`, and `robots.txt`. Each exported signal includes both locales and every linked primary source, evidence classification, verification state, verification date, and a day-normalized freshness timestamp. Versioned catalog, interaction, and export contracts live in `src/data/export.ts`. WFM does not run simulations or experiments; the separate WML application owns those schemas.
 
 ## Curated research scan
 
@@ -42,6 +42,8 @@ npm run research:scan
 ```
 
 The scanner can write pending candidate records only beneath `research/inbox/`. It cannot edit the public catalog, approve content, commit, push, schedule itself, or deploy. Publishing a candidate requires human source review, evidence classification, and paired Turkish/English editing.
+
+The write boundary is enforced for custom output paths and symbolic links. Concurrent scans publish complete candidate files without replacing existing reviews. Candidate schema v2 hashes a structured source/fingerprint tuple; a missing fingerprint creates a pending first-observation candidate instead of silently claiming the source is unchanged. HTTPS is required throughout redirects. Offline HTML fixtures are small deterministic test inputs, not evidence of a live source verification.
 
 ## Evidence contract
 

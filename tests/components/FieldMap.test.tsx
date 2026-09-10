@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { FieldMap } from "../../src/components/map/FieldMap";
@@ -14,15 +14,18 @@ describe("FieldMap", () => {
   it("supports pointer and keyboard selection", async () => {
     const onSelect = vi.fn();
     const user = userEvent.setup();
-    render(<FieldMap locale="en" selectedId="world-model" onSelect={onSelect} />);
-    await user.click(screen.getByRole("button", { name: "Planner" }));
+    const { container } = render(<FieldMap locale="en" selectedId="world-model" onSelect={onSelect} />);
+    const desktop = within(container.querySelector(".field-map__desktop") as HTMLElement);
+    await user.click(desktop.getByRole("button", { name: "Planner" }));
     expect(onSelect).toHaveBeenCalledWith("planner");
-    const worldModel = screen.getByRole("button", { name: "World model" });
+    const worldModel = desktop.getByRole("button", { name: "World model" });
     worldModel.focus();
     fireEvent.keyDown(worldModel, { key: "ArrowRight" });
-    const planner = screen.getAllByRole("button", { name: "Planner" })[0]!;
+    const planner = desktop.getByRole("button", { name: "Planner" });
     expect(planner).toHaveFocus();
-    fireEvent.keyDown(planner, { key: "Enter" });
+    onSelect.mockClear();
+    await user.keyboard("{Enter}");
+    expect(onSelect).toHaveBeenCalledTimes(1);
     expect(onSelect).toHaveBeenCalledWith("planner");
   });
 });
