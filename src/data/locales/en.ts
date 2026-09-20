@@ -78,6 +78,6 @@ export const en: LocaleContent = {
     "claim-cosmos1-multimodal-generation": { text: "NVIDIA reports the Cosmos 1.0 platform generates controllable multimodal world outputs for physical AI development." },
     "claim-gaia1-generative-driving": { text: "Wayve's GAIA-1 paper frames autonomous-driving video as a generative world model conditioned on text, action, and video inputs." },
     "claim-oasis-realtime-interactive": { text: "Decart and Etched report Oasis generates an interactive transformer-based world responding to keyboard and mouse input in real time." },
-    "claim-oasis3-physical-ai": { text: "Decart reports Oasis 3 generates real-time, controllable, synchronized multi-view environments for physical-AI training and exposes them through an API." },
+    "claim-oasis3-physical-ai": { text: "Decart reports Oasis 3 generates real-time, controllable, synchronized multi-view environments for physical-AI training and exposes them through an API. This is a vendor report whose capabilities are not independently measured, not independently verified, and not validated against sim-to-real transfer." },
   },
 };

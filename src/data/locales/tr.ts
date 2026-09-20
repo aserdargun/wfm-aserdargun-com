@@ -78,6 +78,6 @@ export const tr: LocaleContent = {
     "claim-cosmos1-multimodal-generation": { text: "NVIDIA, Cosmos 1.0 platformunun fiziksel yapay zekâ geliştirmesi için kontrol edilebilir çok modlu dünya çıktıları ürettiğini bildiriyor." },
     "claim-gaia1-generative-driving": { text: "Wayve'in GAIA-1 makalesi, otonom sürüş videosunu metin, eylem ve video girdilerine koşullu üretken bir dünya modeli olarak çerçeveler." },
     "claim-oasis-realtime-interactive": { text: "Decart ve Etched, Oasis'in klavye ve fare girdilerine gerçek zamanlı yanıt veren, dönüştürücü tabanlı etkileşimli bir dünya ürettiğini bildiriyor." },
-    "claim-oasis3-physical-ai": { text: "Decart, Oasis 3'ün fiziksel yapay zekâ eğitimi için gerçek zamanlı, kontrol edilebilir ve eş zamanlı çok kameralı ortamlar ürettiğini ve bunları API üzerinden sunduğunu bildiriyor." },
+    "claim-oasis3-physical-ai": { text: "Decart, Oasis 3'ün fiziksel yapay zekâ eğitimi için gerçek zamanlı, kontrol edilebilir ve eş zamanlı çok kameralı ortamlar ürettiğini ve bunları API üzerinden sunduğunu bildiriyor. Bu bir satıcı raporudur; altta yatan yetenekler bağımsız ölçülmedi ve bağımsız doğrulanmadı, simülasyondan gerçeğe aktarım açısından da doğrulanmadı." },
   },
 };
