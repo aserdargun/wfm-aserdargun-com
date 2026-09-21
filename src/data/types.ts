@@ -41,11 +41,11 @@ export interface Source {
   url: string;
   publisher: string;
   sourceType: "paper" | "research-page" | "technical-report" | "repository" | "release-note";
-  publicationDate: string;
+  publicationDate: string | null;
   lastChecked: string;
   expectedEntityIds: string[];
   language: string;
-  accessNotes?: string;
+  accessNotes?: Record<Locale, string>;
 }
 
 export interface Evidence {
@@ -77,7 +77,7 @@ export interface Model {
   id: string;
   organization: string;
   family: "latent-dynamics" | "video-world" | "spatial-world" | "driving-world" | "generalist-world";
-  releaseDate: string;
+  releaseDate: string | null;
   availability: {
     weights: Availability;
     code: Availability;
@@ -90,7 +90,7 @@ export interface Model {
 
 export interface Milestone {
   id: string;
-  date: string;
+  date: string | null;
   entityIds: string[];
   evidenceIds: string[];
 }
@@ -98,8 +98,8 @@ export interface Milestone {
 export interface Signal {
   id: string;
   discoveryDate: string;
-  eventDate: string;
-  publicationDate: string;
+  eventDate: string | null;
+  publicationDate: string | null;
   affectedEntityIds: string[];
   affectedFields: string[];
   evidenceIds: string[];

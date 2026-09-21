@@ -3,30 +3,9 @@ import { catalog } from "../../src/data/catalog";
 import { validateCatalog } from "../../src/data/validate";
 
 /**
- * Regression test for the 2026-09-18 re-review of the Oasis 3 primary source.
- *
- * Scope: this test only restricts itself to Oasis 3-related records. It is a
- * material re-review, not a global catalog date bump. The original
- * observation was that the Oasis 3 evidence was marked `needs-review` while
- * the actual primary page on https://decart.ai/oasis is publicly accessible
- * and describes real-time, control-conditioned, multi-view, AV-first,
- * API-exposed simulation environments.
- *
- * The intended outcomes:
- *   1. The primary source is re-confirmed as accessible on 2026-09-18 and the
- *      accessNotes spell out what was actually reviewed (hero / How it works /
- *      FAQ text) and what was NOT reviewed (deep help-center answers, embedded
- *      videos, sim2real benchmarks, third-party evaluations).
- *   2. The claim text in EN and TR keeps the language of a vendor report
- *      ("Decart reports" / "Decart bildiriyor") and does NOT silently promote
- *      the evidence to `demonstrated` or `validated`. The "first / only"
- *      framing from Decart's marketing copy is not repeated as if independently
- *      verified. Independent measurement is explicitly recorded as unknown.
- *   3. The catalog still validates clean: every other record is left intact
- *      and the validation pipeline must keep accepting it.
- *   4. The Oasis 3 evidence record stays at `verificationState: "needs-review"`
- *      because the parent agent has not authorized a human-approved
- *      promotion to `current`. Auto-promotion is forbidden by methodology.
+ * Preserve the Oasis source review's attribution and measurement boundaries.
+ * Historical review: 2026-09-18. Later reviews may advance freshness without
+ * promoting evidence or inventing a release date.
  */
 
 const oasis3 = () => {
@@ -53,15 +32,15 @@ const oasis3Source = () => {
   return entry;
 };
 
-describe("Oasis 3 primary-source re-review (2026-09-18)", () => {
-  it("records the 2026-09-18 primary-source check and an explicit scope", () => {
+describe("Oasis 3 primary-source review", () => {
+  it("retains the reviewed source scope when verification advances", () => {
     const source = oasis3Source();
-    expect(source.lastChecked).toBe("2026-09-18");
+    expect(source.lastChecked >= "2026-09-18").toBe(true);
     expect(source.url).toBe("https://decart.ai/oasis");
     expect(source.publisher).toBe("Decart");
     expect(source.expectedEntityIds).toContain("oasis-3");
     expect(source.accessNotes).toBeTruthy();
-    const note = source.accessNotes!.toLowerCase();
+    const note = source.accessNotes!.en.toLowerCase();
     // Scope what was actually read.
     expect(note).toMatch(/2026-09-18|18 sept|18 eyl/);
     expect(note).toMatch(/decart\.ai\/oasis/);
@@ -103,7 +82,7 @@ describe("Oasis 3 primary-source re-review (2026-09-18)", () => {
 
   it("documents the exact capability scope and keeps it vendor-reported, not physics-engine / sim2real", () => {
     const model = oasis3();
-    expect(model.releaseDate).toBe("2026-06-10");
+    expect(model.releaseDate).toBeNull();
     expect(model.availability.api).toBe("api");
     // Capabilities should reflect what was actually described in the primary page.
     expect(model.capabilities.realTimeInference).toBe(true);

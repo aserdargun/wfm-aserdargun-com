@@ -9,7 +9,7 @@ export const milestones: Milestone[] = [
   { id: "milestone-gwm-1", date: "2025-12-11", entityIds: ["gwm-1"], evidenceIds: ["evidence-runway-gwm1"] },
   { id: "milestone-waymo-world-model", date: "2026-02-06", entityIds: ["waymo-world-model"], evidenceIds: ["evidence-waymo-world-model"] },
   { id: "milestone-cosmos-3", date: "2026-06-02", entityIds: ["cosmos-3"], evidenceIds: ["evidence-nvidia-cosmos3"] },
-  { id: "milestone-oasis-3", date: "2026-06-10", entityIds: ["oasis-3"], evidenceIds: ["evidence-decart-oasis3"] },
+  { id: "milestone-oasis-3", date: null, entityIds: ["oasis-3"], evidenceIds: ["evidence-decart-oasis3"] },
   { id: "milestone-atlas", date: "2026-09-01", entityIds: ["atlas"], evidenceIds: ["evidence-worldlabs-atlas"] },
   { id: "milestone-gaia-1", date: "2023-09-29", entityIds: ["gaia-1"], evidenceIds: ["evidence-wayve-gaia1"] },
   { id: "milestone-v-jepa-1", date: "2024-02-15", entityIds: ["v-jepa-1"], evidenceIds: ["evidence-meta-vjepa1"] },

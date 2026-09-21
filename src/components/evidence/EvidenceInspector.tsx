@@ -34,6 +34,7 @@ export function EvidenceInspector({ locale, entityId }: EvidenceInspectorProps) 
         <div><dt>{locale === "tr" ? "Yayıncı" : "Publisher"}</dt><dd>{source?.publisher ?? unknown}</dd></div>
         <div><dt>{locale === "tr" ? "Son kontrol" : "Last checked"}</dt><dd>{source ? formatDate(source.lastChecked, locale) : unknown}</dd></div>
       </dl>
+      {source?.accessNotes ? <p className="source-review-note">{source.accessNotes[locale]}</p> : null}
       {source ? <a className="source-link" href={source.url} target="_blank" rel="noreferrer" aria-label={`${title} ${locale === "tr" ? "birincil kaynağını aç" : "open primary source"}`}>
         {locale === "tr" ? "Birincil kaynağı aç" : "Open primary source"}<ExternalLink aria-hidden="true" />
       </a> : null}

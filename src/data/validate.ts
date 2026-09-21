@@ -139,7 +139,7 @@ export function validateCatalog(catalog: Catalog): CatalogIssue[] {
     if (!signal.approved) issues.push(issue("SIGNAL_NOT_APPROVED", `signals.${index}.approved`, `Signal ${signal.id} is not approved.`));
   });
 
-  const dateFields: Array<[string, string]> = [];
+  const dateFields: Array<[string, string | null]> = [];
   catalog.sources.forEach((entry, index) => {
     dateFields.push([`sources.${index}.publicationDate`, entry.publicationDate], [`sources.${index}.lastChecked`, entry.lastChecked]);
   });
@@ -153,7 +153,7 @@ export function validateCatalog(catalog: Catalog): CatalogIssue[] {
     );
   });
   for (const [path, value] of dateFields) {
-    if (!isIsoDate(value)) issues.push(issue("INVALID_DATE", path, `Invalid ISO calendar date: ${value}`));
+    if (value !== null && !isIsoDate(value)) issues.push(issue("INVALID_DATE", path, `Invalid ISO calendar date: ${value}`));
   }
 
   catalog.models.forEach((model, modelIndex) => {

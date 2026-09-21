@@ -25,7 +25,11 @@ npm run validate:codex
 
 `npm run build` emits prerendered HTML for every Turkish and English public route. `npm run validate:codex` runs the production build, unit/contract tests, desktop/mobile browser checks, and `git diff --check`. Standalone `npm test` requires a current build for the prerender assertions.
 
-The build validates the approved catalog before prerendering and emits `research-export.json`, `sitemap.xml`, and `robots.txt`. Each exported signal includes both locales and every linked primary source, evidence classification, verification state, verification date, and a day-normalized freshness timestamp. Versioned catalog, interaction, and export contracts live in `src/data/export.ts`. WFM does not run simulations or experiments; the separate WML application owns those schemas.
+The build validates the approved catalog before prerendering and emits `research-export.json`, `sitemap.xml`, and `robots.txt`. Each exported signal includes both locales and every linked primary source, evidence classification, verification state, verification date, and a day-normalized freshness timestamp. Versioned catalog, interaction, and export contracts live in `src/data/export.ts` (catalog v3, behavior v3, export v2). Unverified publication, release, and event dates use `null`; undated records sort after dated records. Export v2 preserves source publication dates and paired source review notes alongside verification metadata. WFM does not run simulations or experiments; the separate WML application owns those schemas.
+
+## Portfolio reading path
+
+WFM belongs to the physical-AI layer of the aserdargun.com AI Learning System. The home, method, and relevant concept pages connect primary-source research with WML’s educational prediction experiments and ITL’s synthetic industrial-twin records. These are learning links between independent applications, not shared telemetry or runtime integrations.
 
 ## Curated research scan
 

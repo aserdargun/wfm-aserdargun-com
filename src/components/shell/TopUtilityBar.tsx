@@ -17,7 +17,7 @@ export function TopUtilityBar({ locale, currentPath, lastVerified }: TopUtilityB
       <span>WORLD MODELS ATLAS</span>
     </a>
     <div className="topbar__utilities">
-      <span className="verified"><span className="status-dot" aria-hidden="true" />{locale === "tr" ? "Son doğrulama" : "Last verified"}: <strong>{formatDate(lastVerified, locale)}</strong></span>
+      <span className="verified"><span className="status-dot" aria-hidden="true" />{locale === "tr" ? "Son kaynak kontrolü" : "Latest source check"}: <strong>{formatDate(lastVerified, locale)}</strong></span>
       <a className="policy-link" href={`/${locale}/method`}><ShieldCheck aria-hidden="true" />{locale === "tr" ? "Birincil kaynak politikası" : "Primary-source policy"}</a>
       <a className="locale-switch" href={getLocaleCounterpart(currentPath, counterpart)} lang={counterpart}>
         {counterpart === "en" ? "English" : "Türkçe"}

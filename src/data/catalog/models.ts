@@ -16,7 +16,7 @@ export const models: Model[] = [
   {
     id: "genie-3", organization: "Google DeepMind", family: "video-world", releaseDate: "2025-08-05",
     availability: { weights: "closed", code: "closed", api: "limited-preview", paper: "unknown", product: "limited-preview" },
-    capabilities: { interactiveWorld: true, actionConditioning: true, framesPerSecond: { value: 24, unit: "fps" }, maxResolution: { value: 720, unit: "p" } },
+    capabilities: { interactiveWorld: true, videoOutput: true, actionConditioning: true, framesPerSecond: { value: 24, unit: "fps" }, maxResolution: { value: 720, unit: "p" } },
   },
   {
     id: "cosmos-3", organization: "NVIDIA", family: "generalist-world", releaseDate: "2026-06-02",
@@ -26,7 +26,7 @@ export const models: Model[] = [
   {
     id: "atlas", organization: "World Labs", family: "spatial-world", releaseDate: "2026-09-01",
     availability: { weights: "closed", code: "closed", api: "limited-preview", paper: "unknown", product: "limited-preview" },
-    capabilities: { spatialGeneration: true, cameraControl: true, pointCloudOutput: true, gaussianSplatOutput: true, exampleVideoDuration: { value: 60, unit: "seconds" }, exampleVideoResolution: { value: 1440, unit: "p" } },
+    capabilities: { spatialGeneration: true, videoOutput: true, cameraControl: true, pointCloudOutput: true, gaussianSplatOutput: true, exampleVideoDuration: { value: 60, unit: "seconds" }, exampleVideoResolution: { value: 1440, unit: "p" } },
   },
   {
     id: "gwm-1", organization: "Runway", family: "generalist-world", releaseDate: "2025-12-11",
@@ -46,7 +46,7 @@ export const models: Model[] = [
   {
     id: "v-jepa-1", organization: "Meta FAIR", family: "latent-dynamics", releaseDate: "2024-02-15",
     availability: { weights: "open-weights", code: "open-code", api: "unknown", paper: paperOpen, product: "unknown" },
-    capabilities: { latentPrediction: true, selfSupervisedPretraining: true, videoOutput: "unknown" },
+    capabilities: { latentPrediction: true, selfSupervisedPretraining: true, videoOutput: false },
   },
   {
     id: "cosmos-1", organization: "NVIDIA", family: "generalist-world", releaseDate: "2025-01-06",
@@ -61,10 +61,10 @@ export const models: Model[] = [
   {
     id: "oasis", organization: "Decart & Etched", family: "video-world", releaseDate: "2024-10-31",
     availability: { weights: "open-weights", code: "open-code", api: "unknown", paper: paperOpen, product: "unknown" },
-    capabilities: { interactiveWorld: true, actionConditioning: true, realTimeInference: true, framesPerSecond: { value: 20, unit: "fps" }, openWeights: true },
+    capabilities: { interactiveWorld: true, videoOutput: true, actionConditioning: true, realTimeInference: true, framesPerSecond: { value: 20, unit: "fps" }, openWeights: true },
   },
   {
-    id: "oasis-3", organization: "Decart", family: "driving-world", releaseDate: "2026-06-10",
+    id: "oasis-3", organization: "Decart", family: "driving-world", releaseDate: null,
     availability: { weights: "closed", code: "closed", api: "api", paper: "unknown", product: "api" },
     capabilities: { interactiveWorld: true, realTimeInference: true, drivingSimulation: true, actionConditioning: true, multiView: true },
   },

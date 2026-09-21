@@ -1,4 +1,5 @@
 import { BookOpen, Boxes, GitBranch, Map, Radio, ShieldCheck } from "lucide-react";
+import { portfolioHome } from "../../data/locales/portfolio";
 import type { Locale } from "../../data/types";
 
 export type RouteId = "home" | "concepts" | "models" | "evolution" | "signals" | "method";
@@ -35,5 +36,9 @@ export function SidebarNav({ locale, currentRoute, inDialog = false }: SidebarNa
         })}
       </ul>
     </section>)}
+    <section className="nav-group">
+      <h2>ASERDARGUN.COM</h2>
+      <ul><li><a href={portfolioHome(locale)}><Map aria-hidden="true" /><span>AI Learning System</span></a></li></ul>
+    </section>
   </nav>;
 }

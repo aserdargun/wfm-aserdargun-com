@@ -30,7 +30,7 @@ describe("research boundaries", () => {
 
   it("exports paired copy, source, evidence strength, and date-normalized freshness for every signal", () => {
     const result = getApprovedExport();
-    expect(result.versions.export).toBe(1);
+    expect(result.versions.export).toBe(2);
     for (const signal of result.signals) {
       expect(signal.approved).toBe(true);
       expect(signal.locales.en?.summary).toBeTruthy();

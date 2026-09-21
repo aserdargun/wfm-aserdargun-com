@@ -193,3 +193,14 @@
   .field-path-mobile button { min-height: 44px; text-align: left; }
   .mobile-evidence-link { grid-column: 2; display: inline-flex; align-items: center; min-height: 44px; color: var(--color-selection); font-size: .8125rem; }
 }
+
+.portfolio-context { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--color-border); }
+.portfolio-context h2 { font-size: 1.125rem; }
+.portfolio-context p { max-width: 760px; color: var(--color-text-muted); }
+.portfolio-context__scope { font-size: .8125rem; }
+.portfolio-context__links { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+.portfolio-context__links a { min-height: 44px; }
+.related-models { display: flex; flex-wrap: wrap; gap: 8px 24px; list-style: none; padding: 0; }
+.related-models a { display: inline-flex; align-items: center; min-height: 44px; }
+.source-review-note { padding: 12px; border-left: 3px solid var(--color-reported); background: var(--color-reported-soft); font-size: .875rem; }
+.mobile-nav { overflow-y: auto; }

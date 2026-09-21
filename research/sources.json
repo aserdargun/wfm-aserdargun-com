@@ -77,7 +77,7 @@
   },
   {
     "id": "wayve-gaia3",
-    "url": "https://wayve.ai/press/wayve-launches-gaia3/",
+    "url": "https://wayve.ai/thinking/gaia-3/",
     "entityIds": [
       "gaia-3"
     ],
@@ -180,7 +180,8 @@
     "id": "vjepa-paper",
     "url": "https://arxiv.org/abs/2404.08471",
     "entityIds": [
-      "self-supervised-pretraining"
+      "self-supervised-pretraining",
+      "v-jepa-1"
     ],
     "fixture": "vjepa-paper.html",
     "previousFingerprint": "05cd2ade8f37d51f5c5daced983a847c4f7fb418049788df08d191a768bcf2af"

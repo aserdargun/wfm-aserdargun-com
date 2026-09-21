@@ -1,7 +1,7 @@
 import { Check, Minus, X } from "lucide-react";
 import { catalog } from "../../data/catalog";
 import type { CapabilityValue, Locale, Model } from "../../data/types";
-import { formatAvailability, formatEvidenceLabel, formatModelFamily } from "../../app/format";
+import { formatAvailability, formatEvidenceLabel, formatModelFamily, formatDate } from "../../app/format";
 
 interface Props { locale: Locale; modelIds: string[]; }
 
@@ -35,6 +35,15 @@ export function ModelComparison({ locale, modelIds }: Props) {
     { tr: "Kanıt", en: "Evidence", render: (m: Model) => {
       const value = catalog.claims.find((claim) => claim.subjectId === m.id)?.evidenceStatus;
       return value ? formatEvidenceLabel(locale, value) : unknown(locale);
+    } },
+    { tr: "Doğrulama durumu", en: "Verification state", render: (m: Model) => {
+      const value = catalog.claims.find((claim) => claim.subjectId === m.id)?.verificationState;
+      return value ? formatEvidenceLabel(locale, value) : unknown(locale);
+    } },
+    { tr: "Son kaynak kontrolü", en: "Source last checked", render: (m: Model) => {
+      const claim = catalog.claims.find((entry) => entry.subjectId === m.id);
+      const dates = catalog.evidence.filter((entry) => claim?.evidenceIds.includes(entry.id)).map((entry) => catalog.sources.find((source) => source.id === entry.sourceId)!.lastChecked).sort();
+      return dates[0] ? formatDate(dates[0], locale) : unknown(locale);
     } },
   ];
   return <div className="comparison-scroll" role="region" aria-label={locale === "tr" ? "Kaydırılabilir model karşılaştırması" : "Scrollable model comparison"} tabIndex={0}>

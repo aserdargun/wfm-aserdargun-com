@@ -16,7 +16,7 @@ import { ModelPage } from "../pages/ModelPage";
 import { NotFoundPage } from "../pages/NotFoundPage";
 import { SignalsPage } from "../pages/SignalsPage";
 import { getLocaleCounterpart, localeFromPath } from "./locale";
-import { CATALOG_VERIFIED_ON } from "./format";
+import { LATEST_SOURCE_CHECK } from "./format";
 import { getRouteManifest } from "./routes";
 
 interface AppProps { routerMode?: "browser" | "static"; url?: string; }
@@ -84,7 +84,7 @@ function RouteView() {
   } else if (section === "method") { currentRoute = "method"; page = <MethodPage locale={locale} />;
   } else page = <NotFoundPage locale={locale} />;
 
-  return <ResearchConsole locale={locale} currentRoute={currentRoute} currentPath={`${location.pathname}${location.search}${location.hash}`} lastVerified={CATALOG_VERIFIED_ON} evidenceInspector={inspectorId ? <EvidenceInspector locale={locale} entityId={inspectorId} /> : undefined}>{page}</ResearchConsole>;
+  return <ResearchConsole locale={locale} currentRoute={currentRoute} currentPath={`${location.pathname}${location.search}${location.hash}`} lastVerified={LATEST_SOURCE_CHECK} evidenceInspector={inspectorId ? <EvidenceInspector locale={locale} entityId={inspectorId} /> : undefined}>{page}</ResearchConsole>;
 }
 
 export function App({ routerMode = "browser", url = "/en" }: AppProps) {

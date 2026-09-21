@@ -8,11 +8,16 @@ import type {
   VerificationState,
 } from "../data/types";
 
-export const CATALOG_VERIFIED_ON = "2026-09-04";
+import { sources } from "../data/catalog/sources";
+
+// These describe source review dates, not a whole-catalog certification.
+export const LATEST_SOURCE_CHECK = sources.map(({ lastChecked }) => lastChecked).sort().at(-1)!;
+export const OLDEST_SOURCE_CHECK = sources.map(({ lastChecked }) => lastChecked).sort()[0]!;
 
 const localeTag = (locale: Locale) => locale === "tr" ? "tr-TR" : "en-US";
 
-export function formatDate(value: string, locale: Locale): string {
+export function formatDate(value: string | null, locale: Locale): string {
+  if (value === null) return locale === "tr" ? "Tarih bilinmiyor" : "Date unknown";
   return new Intl.DateTimeFormat(localeTag(locale), {
     day: "numeric",
     month: "short",
