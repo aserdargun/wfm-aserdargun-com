@@ -25,10 +25,21 @@ for (const route of manifest) {
     `<link rel="canonical" href="${canonical}" />`,
     `<link rel="alternate" hreflang="${route.locale}" href="${canonical}" />`,
     counterpart ? `<link rel="alternate" hreflang="${counterpartLocale}" href="https://wfm.aserdargun.com${counterpart.path}" />` : "",
+    `<meta property="og:type" content="website" />`,
+    `<meta property="og:site_name" content="World Models Atlas" />`,
+    `<meta property="og:title" content="${escapeAttribute(route.title)}" />`,
+    `<meta property="og:description" content="${escapeAttribute(route.description)}" />`,
+    `<meta property="og:url" content="${canonical}" />`,
+    `<meta name="twitter:card" content="summary" />`,
+    `<meta name="twitter:title" content="${escapeAttribute(route.title)}" />`,
+    `<meta name="twitter:description" content="${escapeAttribute(route.description)}" />`,
   ].join("\n    ");
   const html = template
     .replace('<html lang="en">', `<html lang="${route.locale}">`)
     .replace(/<title>.*?<\/title>/, `<title>${escapeHtml(route.title)}</title>\n    ${metadata}`)
+    // Prerendered routes already ship their full rendered text, so the
+    // client-side shell fallback is removed to avoid duplicate content.
+    .replace(/\s*<noscript>[\s\S]*?<\/noscript>/, "")
     .replace('<div id="root"></div>', `<div id="root">${rendered.appHtml}</div>`);
   const outputDir = resolve(distDir, route.path.replace(/^\//, ""));
   await mkdir(outputDir, { recursive: true });

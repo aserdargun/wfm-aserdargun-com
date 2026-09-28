@@ -45,6 +45,11 @@ function RouteView() {
       if (!element) { element = document.createElement("meta"); element.name = name; document.head.append(element); }
       element.content = content;
     };
+    const property = (key: string, content: string) => {
+      let element = document.querySelector<HTMLMetaElement>(`meta[property="${key}"]`);
+      if (!element) { element = document.createElement("meta"); element.setAttribute("property", key); document.head.append(element); }
+      element.content = content;
+    };
     meta("description", route?.description ?? notFoundTitle);
     document.querySelectorAll('link[rel="canonical"], link[rel="alternate"][hreflang]').forEach((element) => element.remove());
     if (route) {
@@ -58,6 +63,11 @@ function RouteView() {
       const canonical = document.createElement("link");
       canonical.rel = "canonical"; canonical.href = `https://wfm.aserdargun.com${route.path}`;
       document.head.append(canonical);
+      property("og:title", route.title);
+      property("og:description", route.description);
+      property("og:url", `https://wfm.aserdargun.com${route.path}`);
+      meta("twitter:title", route.title);
+      meta("twitter:description", route.description);
     } else meta("robots", "noindex");
   }, [locale, route]);
 
