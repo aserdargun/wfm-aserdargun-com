@@ -15,7 +15,7 @@ interface Props {
 export function ModelFilters({ locale, family, onFamilyChange, capability, compare, onCapabilityChange, onCompareChange }: Props) {
 
   return <aside className="model-filters" aria-label={locale === "tr" ? "Model filtreleri" : "Model filters"}>
-    <label className="family-filter">{locale === "tr" ? "Model ailesi" : "Model family"}<select value={family ?? ""} onChange={(event) => onFamilyChange(event.target.value || null)}><option value="">{locale === "tr" ? "Tüm aileler" : "All families"}</option>{[...new Set(catalog.models.map(({ family }) => family))].map((value) => <option key={value} value={value}>{formatModelFamily(locale, value)}</option>)}</select></label>
+    <label className="family-filter">{locale === "tr" ? "Model ailesi" : "Model family"}<select value={family ?? ""} onChange={(event) => onFamilyChange(event.target.value || null)}><option value="">{locale === "tr" ? "Tüm aileler" : "All families"}</option>{[...new Set(catalog.models.map((model) => model.family))].map((value) => <option key={value} value={value}>{formatModelFamily(locale, value)}</option>)}</select></label>
     <fieldset><legend>{locale === "tr" ? "Yetenek" : "Capability"}</legend>
       <label><input type="checkbox" checked={capability === "spatial-3d"} onChange={(event) => onCapabilityChange(event.target.checked ? "spatial-3d" : null)} /> {locale === "tr" ? "Mekânsal / 3B" : "Spatial / 3D"}</label>
       <label><input type="checkbox" checked={capability === "action-conditioning"} onChange={(event) => onCapabilityChange(event.target.checked ? "action-conditioning" : null)} /> {locale === "tr" ? "Eylemle koşullama" : "Action conditioning"}</label>

@@ -13,7 +13,8 @@
     "test:e2e": "playwright test",
     "research:scan": "node scripts/research/scan.mjs",
     "validate": "npm run build && npm run test && npm run test:e2e",
-    "validate:codex": "npm run validate && git diff --check"
+    "validate:codex": "npm run lint && npm run validate && git diff --check",
+    "lint": "oxlint --type-aware --deny-warnings ."
   },
   "engines": {
     "node": ">=22.0.0"
@@ -38,6 +39,8 @@
     "@types/react-dom": "19.2.5",
     "@vitejs/plugin-react": "6.1.1",
     "jsdom": "30.0.1",
+    "oxlint": "^1.86.0",
+    "oxlint-tsgolint": "^7.0.2003",
     "typescript": "7.0.2",
     "vite": "8.2.2",
     "vitest": "4.1.11"

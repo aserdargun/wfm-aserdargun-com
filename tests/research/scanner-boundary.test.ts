@@ -27,8 +27,8 @@ describe("research write boundary", () => {
   it("covers every catalog source and its subjects with deterministic offline scans", async () => {
     const registry = JSON.parse(await readFile("research/sources.json", "utf8"));
     expect(registry).toHaveLength(sources.length);
-    for (const source of sources) {
-      expect(registry).toContainEqual(expect.objectContaining({ id: source.id.replace(/^source-/, ""), url: source.url, entityIds: source.expectedEntityIds }));
+    for (const entry of sources) {
+      expect(registry).toContainEqual(expect.objectContaining({ id: entry.id.replace(/^source-/, ""), url: entry.url, entityIds: entry.expectedEntityIds }));
     }
     const report = await scanSources({ inboxDir: await scratch(true), fixturesDir: "tests/fixtures/research" });
     expect(report.status).toBe("ready");

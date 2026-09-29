@@ -76,7 +76,7 @@ export function FieldMap({ locale, selectedId, onSelect }: FieldMapProps) {
     </div>
     <FieldMapTextAlternative locale={locale} selectedId={selectedId} onSelect={onSelect} />
     <ul id="field-map-relations" className="sr-only">
-      {relationDescriptions.map((description) => <li key={description}>{description}</li>)}
+      {relationDescriptions.map((text) => <li key={text}>{text}</li>)}
     </ul>
   </section>;
 }

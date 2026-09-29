@@ -19,7 +19,7 @@ export function ModelIndexPage({ locale }: { locale: Locale }) {
   const setCompare = (id: string, checked: boolean) => {
     const nextValues = checked ? [...new Set([...compare, id])] : compare.filter((value) => value !== id);
     if (nextValues.length > 4) return;
-    update({ ...state, compare: catalog.models.filter((model) => nextValues.includes(model.id)).map(({ id }) => id) });
+    update({ ...state, compare: catalog.models.filter((model) => nextValues.includes(model.id)).map((model) => model.id) });
   };
   return <div className="page"><header className="page-header"><span className="eyebrow">{locale === "tr" ? "KARŞILAŞTIRMALI ARAŞTIRMA" : "COMPARATIVE RESEARCH"}</span><h1>{locale === "tr" ? "Model aileleri" : "Model families"}</h1><p>{locale === "tr" ? "Temsil, eylem koşullama, mekânsal çıktı ve erişim biçimlerini tek bir puana indirgemeden karşılaştırın." : "Compare representation, action conditioning, spatial output, and availability without collapsing unlike evidence into one score."}</p></header>
     <div className="model-explorer"><ModelFilters locale={locale} family={state.family ?? null} onFamilyChange={setFamily} capability={capability} compare={compare} onCapabilityChange={setCapability} onCompareChange={setCompare} /><div className="model-results"><p className="result-count" role="status">{visible.length} {locale === "tr" ? "model" : "models"}</p><div className="model-list">{visible.map((model) => { const item = catalog.locales[locale].entities[model.id]!; return <a href={`/${locale}/models/${item.slug}`} key={model.id}><span>{model.organization} · {formatDate(model.releaseDate, locale)}</span><h2>{item.title}</h2><p>{item.summary}</p></a>; })}</div></div></div>

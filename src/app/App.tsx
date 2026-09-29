@@ -5,7 +5,6 @@ import { EvidenceInspector } from "../components/evidence/EvidenceInspector";
 import { ResearchConsole } from "../components/shell/ResearchConsole";
 import type { RouteId } from "../components/shell/SidebarNav";
 import { catalog } from "../data/catalog";
-import type { Locale } from "../data/types";
 import { ConceptIndexPage } from "../pages/ConceptIndexPage";
 import { ConceptPage } from "../pages/ConceptPage";
 import { EvolutionPage } from "../pages/EvolutionPage";
