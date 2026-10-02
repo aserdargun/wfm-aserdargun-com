@@ -12,6 +12,8 @@ describe("published catalog", () => {
       "cosmos-3",
       "atlas",
       "gwm-1",
+      "gwm-2",
+      "odyssey-3",
       "waymo-world-model",
       "gaia-3",
       "v-jepa-1",

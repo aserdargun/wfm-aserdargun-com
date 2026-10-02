@@ -18,6 +18,8 @@ const SUBJECT_TOKENS: Record<string, RegExp> = {
   "cosmos-3": /cosmos\s*3/i,
   atlas: /atlas/i,
   "gwm-1": /gwm-?1/i,
+  "gwm-2": /gwm\s*worlds\s*2|gwm-?2/i,
+  "odyssey-3": /odyssey-?3/i,
   "waymo-world-model": /waymo/i,
   "gaia-3": /gaia-?3/i,
   "v-jepa-1": /v-?jepa(?!.*2)/i,

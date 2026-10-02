@@ -185,5 +185,23 @@
     ],
     "fixture": "vjepa-paper.html",
     "previousFingerprint": "05cd2ade8f37d51f5c5daced983a847c4f7fb418049788df08d191a768bcf2af"
+  },
+  {
+    "id": "runway-gwm2",
+    "url": "https://runway.com/research/introducing-gwm-worlds-2",
+    "entityIds": [
+      "gwm-2"
+    ],
+    "fixture": "runway-gwm2.html",
+    "previousFingerprint": "eb3901a7a6658b8372f2061df494bc2c55870e6e3abe589ced68bb802876952f"
+  },
+  {
+    "id": "odyssey-3",
+    "url": "https://odyssey.systems/introducing-odyssey-3",
+    "entityIds": [
+      "odyssey-3"
+    ],
+    "fixture": "odyssey-3.html",
+    "previousFingerprint": "e1a2433969de27e12e04c5f9f9de406c5cbb89655caf7b5f8c8ed53be11a8d2c"
   }
 ]

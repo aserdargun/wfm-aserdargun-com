@@ -34,6 +34,20 @@ export const models: Model[] = [
     capabilities: { interactiveWorld: true, actionConditioning: true, videoOutput: true, robotics: true },
   },
   {
+    id: "gwm-2", organization: "Runway", family: "generalist-world", releaseDate: "2026-09-03",
+    availability: { weights: "closed", code: "closed", api: "unknown", paper: "unknown", product: "limited-preview" },
+    capabilities: {
+      interactiveWorld: true, actionConditioning: true, videoOutput: true, audioOutput: true,
+      videoResolution: { value: 720, unit: "p" }, framesPerSecond: { value: 24, unit: "fps" },
+      audioSampleRate: { value: 48_000, unit: "Hz" }, openEndedDuration: true,
+    },
+  },
+  {
+    id: "odyssey-3", organization: "Odyssey", family: "generalist-world", releaseDate: "2026-09-15",
+    availability: { weights: "closed", code: "closed", api: "closed", paper: "unknown", product: "limited-preview" },
+    capabilities: { embodiedControl: true, actionConditioning: true, robotics: true, drivingSimulation: true, droneControl: true, environmentGeneration: true },
+  },
+  {
     id: "waymo-world-model", organization: "Waymo", family: "driving-world", releaseDate: "2026-02-06",
     availability: { weights: "closed", code: "closed", api: "closed", paper: "unknown", product: "closed" },
     capabilities: { drivingSimulation: true, actionConditioning: true, multiSensor: true, counterfactuals: true },
