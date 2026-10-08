@@ -165,7 +165,7 @@ export const sources: Source[] = [
     publisher: "Decart",
     sourceType: "research-page",
     publicationDate: null,
-    lastChecked: "2026-09-21",
+    lastChecked: "2026-10-07",
     expectedEntityIds: ["oasis-3"],
     language: "en",
   },
